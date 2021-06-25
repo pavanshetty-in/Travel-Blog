@@ -13,12 +13,13 @@
   min-width: 70%;
   min-height: 80vh;
   background-color: $dark-blue1;
+  
 }
 .container-form {
   height: 100%;
   position: absolute;
   width: 50%;
-  background-color:$dark-blue1;
+  background-color: $dark-blue1;
   -webkit-transition: all 0.6s ease-in-out;
   transition: all 0.6s ease-in-out;
 }
@@ -132,7 +133,7 @@
 
 .overlay {
   background-color: var(--lightblue);
-  background: url("https://res.cloudinary.com/dci1eujqw/image/upload/v1616769558/Codepen/waldemar-brandt-aThdSdgx0YM-unsplash_cnq4sb.jpg");
+  background: url("./../assets/123Z_2012.w020.n001.932B.p15.932.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
