@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "variable.css",
+	"sources": [
+		"../sass/variable.scss"
+	],
+	"sourcesContent": [
+		"$dark-blue1:#0E0D2D;\r\n$dark-blue2:hsl(237, 56%, 24%);\r\n$card-blue:#463DB2;\r\n$light-blue:#7B98DA;\r\n$button-red:#CE3434;\r\n$orange:#F9A251;\r\n$white:#FFF;\r\n"
+	],
+	"names": [],
+	"mappings": ""
+}

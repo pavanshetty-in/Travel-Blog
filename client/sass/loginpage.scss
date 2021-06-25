@@ -1,0 +1,100 @@
+@import "./variable.scss";
+@import "./default.scss";
+.background {
+  background-color: $dark-blue2;
+  font-family: $font1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  position: relative;
+  display: block;
+  min-width: 70%;
+  min-height: 80vh;
+  background-color: $dark-blue1;
+}
+.container-form {
+  height: 100%;
+  position: absolute;
+  width: 50%;
+  transition: all 0.6s ease-in-out;
+}
+.container-signup {
+  //   left: 0;
+  //   opacity: 0;
+  //   width: 50%;
+  //   z-index: 1;
+}
+.form1 {
+  margin: 2vw 5vw;
+  color: $white;
+}
+.form-flex {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.2vw 0;
+  height: 1px;
+  h1 {
+    align-self: center;
+    margin: 1vw 0;
+  }
+  p {
+    font-size: 12px;
+  }
+  button {
+    margin: 0.5vw 0;
+    background-color: $light-blue;
+    border: none;
+    outline: none;
+    color: $white;
+    font-weight: bold;
+    padding: 0.8vw 0;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 1vw;
+    &:hover {
+      background-color: darken($light-blue, 10%);
+    }
+  }
+}
+.textbox {
+  display: flex;
+  background-color: lighten($dark-blue1, 3%);
+  margin: 0.5vw 0;
+  border-radius: 3px;
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+  border-left: 3px solid $light-blue;
+  border-right: 3px solid $light-blue;
+
+  span {
+    @include flex-center;
+
+    border-right: 1px solid $grey;
+    i {
+      padding: 0 15px;
+    }
+  }
+  div {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    p {
+      color: $light-blue;
+      padding: 0.2vw 0.5vw;
+      font-size: 14px;
+      border-bottom: 1px solid $grey;
+    }
+    input {
+      background-color: transparent;
+      border: none;
+      height: 2vw;
+      color: $white;
+      padding-left: 0.5vw;
+      outline: none;
+    }
+  }
+}

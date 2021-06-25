@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  background-color: #1b1e5f;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container {
+  position: relative;
+  display: block;
+  min-width: 70%;
+  min-height: 80vh;
+  background-color: #0e0d2d;
+}
+
+.container-form {
+  height: 100%;
+  position: absolute;
+  width: 50%;
+  -webkit-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+.form1 {
+  margin: 2vw 5vw;
+  color: #fff;
+}
+
+.form-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0.2vw 0;
+  height: 1px;
+}
+
+.form-flex h1 {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 1vw 0;
+}
+
+.form-flex p {
+  font-size: 12px;
+}
+
+.form-flex button {
+  margin: 0.5vw 0;
+  background-color: #7b98da;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.8vw 0;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 1vw;
+}
+
+.form-flex button:hover {
+  background-color: #5379cf;
+}
+
+.textbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #121039;
+  margin: 0.5vw 0;
+  border-radius: 3px;
+  border-top: 1px solid rgba(80, 80, 104, 0.4);
+  border-bottom: 1px solid rgba(80, 80, 104, 0.4);
+  border-left: 3px solid #7b98da;
+  border-right: 3px solid #7b98da;
+}
+
+.textbox span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-right: 1px solid rgba(80, 80, 104, 0.4);
+}
+
+.textbox span i {
+  padding: 0 15px;
+}
+
+.textbox div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.textbox div p {
+  color: #7b98da;
+  padding: 0.2vw 0.5vw;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(80, 80, 104, 0.4);
+}
+
+.textbox div input {
+  background-color: transparent;
+  border: none;
+  height: 2vw;
+  color: #fff;
+  padding-left: 0.5vw;
+  outline: none;
+}
+/*# sourceMappingURL=loginpage.css.map */
