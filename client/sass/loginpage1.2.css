@@ -31,6 +31,7 @@
   height: 100%;
   position: absolute;
   width: 50%;
+  background-color: #0e0d2d;
   -webkit-transition: all 0.6s ease-in-out;
   transition: all 0.6s ease-in-out;
 }
