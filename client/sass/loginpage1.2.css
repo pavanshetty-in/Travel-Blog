@@ -31,41 +31,35 @@
   height: 100%;
   position: absolute;
   width: 50%;
-  background-color: #0e0d2d;
   -webkit-transition: all 0.6s ease-in-out;
   transition: all 0.6s ease-in-out;
 }
 
 .container-signup {
   left: 0;
-  width: 50%;
-  z-index: 2;
-}
-
-.container-signin {
-  left: 0;
   opacity: 0;
   width: 50%;
   z-index: 1;
 }
 
-.form1 {
-  margin: 2vw 5vw;
-  color: #fff;
-}
-
-.container.active-pannel.container-signup {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-
-.container.active-panel.container-signin {
+.container.active-panel .container-signup {
   -webkit-animation: show 0.6s;
           animation: show 0.6s;
   opacity: 1;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   z-index: 5;
+}
+
+.container-signin {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.container.active-panel .container-signin {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
 }
 
 .form-flex {
@@ -167,7 +161,12 @@
   outline: none;
 }
 
-.container-overlay {
+.form1 {
+  margin: 2vw 5vw;
+  color: #fff;
+}
+
+.container__overlay {
   height: 100%;
   left: 50%;
   overflow: hidden;
@@ -181,7 +180,7 @@
   z-index: 100;
 }
 
-.container.active-panel .container-overlay {
+.container.active-panel .container__overlay {
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
 }
@@ -205,12 +204,12 @@
   width: 200%;
 }
 
-.container.active-panel.overlay {
+.container.active-panel .overlay {
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
 }
 
-.overlay-panel {
+.overlay__panel {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -237,23 +236,23 @@
   width: 50%;
 }
 
-.overlay-left {
+.overlay--left {
   -webkit-transform: translateX(-20%);
           transform: translateX(-20%);
 }
 
-.container.active-panel.overlay-left {
+.container.active-panel .overlay--left {
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
 
-.overlay-right {
+.overlay--right {
   right: 0;
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
 
-.container.active-panel.overlay-right {
+.container.active-panel .overlay--right {
   -webkit-transform: translateX(20%);
           transform: translateX(20%);
 }
@@ -315,4 +314,4 @@
     z-index: 5;
   }
 }
-/*# sourceMappingURL=loginpage.css.map */
+/*# sourceMappingURL=loginpage1.2.css.map */
