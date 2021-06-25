@@ -1,0 +1,92 @@
+/* line 1, D:/mini projects/Travel-Blog/client/sass/default.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 3, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.background {
+  background-color: #1b1e5f;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 10, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.container {
+  position: relative;
+  display: block;
+  min-width: 70%;
+  min-height: 80vh;
+  background-color: #0E0D2D;
+}
+
+/* line 17, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.container-form {
+  height: 100%;
+  position: absolute;
+  width: 50%;
+  transition: all 0.6s ease-in-out;
+}
+
+/* line 29, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.form1 {
+  margin: 3vw 5vw;
+  color: #FFF;
+}
+
+/* line 33, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  margin: 2vw 0;
+}
+
+/* line 39, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.textbox {
+  display: flex;
+  background-color: #1b1e5f;
+  border-top: 1px solid #e5e4e2;
+  border-bottom: 1px solid #e5e4e2;
+  border-left: 5px solid #7B98DA;
+  border-right: 5px solid #7B98DA;
+}
+
+/* line 46, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.textbox span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #e5e4e2;
+}
+
+/* line 50, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.textbox span i {
+  padding: 0 10px;
+}
+
+/* line 54, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.textbox div {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 58, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.textbox div p {
+  color: #F9A251;
+  padding: 0.5vw;
+  font-size: 12px;
+  border-bottom: 1px solid #e5e4e2;
+}
+
+/* line 64, D:/mini projects/Travel-Blog/client/sass/loginpage.scss */
+.textbox div input {
+  background-color: transparent;
+  border: none;
+  height: 2vw;
+  color: #FFF;
+}
+
+/*# sourceMappingURL=loginpage.css.map */
