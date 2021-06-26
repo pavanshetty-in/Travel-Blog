@@ -6,6 +6,11 @@
   font-family: $font1;
   min-height: 100vh;
   @include flex-center;
+  // background-image: url("./../assets/5335286.1.2.png");
+  // background-attachment: fixed;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
 }
 .container {
   position: relative;
@@ -13,7 +18,6 @@
   min-width: 70%;
   min-height: 80vh;
   background-color: $dark-blue1;
-  
 }
 .container-form {
   height: 100%;
@@ -133,7 +137,7 @@
 
 .overlay {
   background-color: var(--lightblue);
-  background: url("./../assets/123Z_2012.w020.n001.932B.p15.932.jpg");
+  background: url("./../assets/loginbg2.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -151,17 +155,32 @@
 }
 
 .overlay__panel {
-  align-items: center;
-  display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center;
+  @include flex-center;
   position: absolute;
   text-align: center;
   top: 0;
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
   width: 50%;
+  color: $white;
+  h1 {
+    font-size: 2.2vw;
+    margin: 1vw 0;
+  }
+  button {
+    padding: 0.5vw 2vw;
+    margin: 2vw 0;
+    font-weight: 700;
+    border: none;
+    background-color: $orange;
+    color: $white;
+    border-radius: 2px;
+  }
+  .thin {
+    font-weight: 200;
+  }
 }
 
 .overlay--left {
