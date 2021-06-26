@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600;700;800&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -188,7 +188,7 @@
 
 .overlay {
   background-color: var(--lightblue);
-  background: url("./../assets/123Z_2012.w020.n001.932B.p15.932.jpg");
+  background: url("./../assets/loginbg2.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -211,20 +211,20 @@
 }
 
 .overlay__panel {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
   text-align: center;
   top: 0;
@@ -235,6 +235,26 @@
   transition: transform 0.6s ease-in-out;
   transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
   width: 50%;
+  color: #fff;
+}
+
+.overlay__panel h1 {
+  font-size: 2.2vw;
+  margin: 1vw 0;
+}
+
+.overlay__panel button {
+  padding: 0.5vw 2vw;
+  margin: 2vw 0;
+  font-weight: 700;
+  border: none;
+  background-color: #f9a251;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.overlay__panel .thin {
+  font-weight: 200;
 }
 
 .overlay--left {
