@@ -12,5 +12,5 @@ signUpBtn.addEventListener("click", () => {
 	container.classList.add("active-panel");
 });
 
-fistForm.addEventListener("submit", (e) => e.preventDefault());
-secondForm.addEventListener("submit", (e) => e.preventDefault());
+// fistForm.addEventListener("submit", (e) => e.preventDefault());
+// secondForm.addEventListener("submit", (e) => e.preventDefault());

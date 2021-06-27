@@ -1,125 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel</title>
 
     <link rel="stylesheet" href="css/style.css" />
-    <script
-      src="https://kit.fontawesome.com/154fa5a621.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
+    <script src="https://kit.fontawesome.com/154fa5a621.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
     <section class="background">
-      <div class="container active-pannel">
-        <div class="container-form container-signup">
-          <form class="form1" id="form1">
-            <h2>LOGO</h2>
-            <div class="form-flex">
-              <h1>Sign up</h1>
-              <div class="textbox">
-                <span class="icon">
-                  <i class="fas fa-user"></i>
-                </span>
-                <div>
-                  <p>Name</p>
-                  <input
-                    type="text"
-                    placeholder=" Your Full Name"
-                    pattern="[A-Za-z\s]+"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="textbox">
-                <span class="icon">
-                  <i class="fas fa-envelope"></i>
-                </span>
-                <div>
-                  <p>Email</p>
-                  <input type="email" placeholder="Your EmailID" required />
-                </div>
-              </div>
-              <div class="textbox">
-                <span class="icon">
-                  <i class="fas fa-unlock"></i>
-                </span>
-                <div>
-                  <p>Password</p>
-                  <input type="password" placeholder="Your Password" required />
-                </div>
-              </div>
-              <div class="textbox">
-                <span class="icon">
-                  <i class="fas fa-unlock-alt"></i>
-                </span>
-                <div>
-                  <p>Confirm Password</p>
-                  <input type="Password" placeholder="Re-enter Your Password" />
-                </div>
-              </div>
-              <p>By Clicking 'Sign up' button you agree to our Terms of Use</p>
-              <button type="submit">Sign up</button>
+        <div class="container active-pannel">
+            <div class="container-form container-signup">
+                <form class="form1" id="form1" method="POST" action="/signin">
+                    <h2>LOGO</h2>
+                    <div class="form-flex">
+                        <h1>Sign up</h1>
+                        <div class="textbox">
+                            <span class="icon">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <div>
+                                <p>Name</p>
+                                <input name="name" type="text" placeholder=" Your Full Name" pattern="[A-Za-z\s]+"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="textbox">
+                            <span class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <div>
+                                <p>Email</p>
+                                <input name="email" type="email" placeholder="Your EmailID" required />
+                            </div>
+                        </div>
+                        <div class="textbox">
+                            <span class="icon">
+                                <i class="fas fa-unlock"></i>
+                            </span>
+                            <div>
+                                <p>Password</p>
+                                <input name="password" type="password" placeholder="Your Password" required />
+                            </div>
+                        </div>
+                        <div class="textbox">
+                            <span class="icon">
+                                <i class="fas fa-unlock-alt"></i>
+                            </span>
+                            <div>
+                                <p>Confirm Password</p>
+                                <input name="cpassword" type="Password" placeholder="Re-enter Your Password" />
+                            </div>
+                        </div>
+                        <p>By Clicking 'Sign up' button you agree to our Terms of Use</p>
+                        <button type="submit">Sign up</button>
+                    </div>
+                </form>
             </div>
-          </form>
+            <div class="container-form container-signin">
+                <form class="form1 form2" id="form2">
+                    <h2>LOGO</h2>
+                    <div class="form-flex">
+                        <h1>Sign in</h1>
+
+                        <div class="textbox" style="margin-top: 50px;">
+                            <span class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <div>
+                                <p>Email</p>
+                                <input type="email" placeholder="Your EmailID" required />
+                            </div>
+                        </div>
+                        <div class="textbox">
+                            <span class="icon">
+                                <i class="fas fa-unlock"></i>
+                            </span>
+                            <div>
+                                <p>Password</p>
+                                <input type="password" placeholder="Your Password" required />
+                            </div>
+                        </div>
+
+                        <p>By Clicking 'Sign in' button you agree to our Terms of Use</p>
+                        <button type="submit">Sign in</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="container__overlay">
+                <div class="overlay">
+                    <div class="overlay__panel overlay--left">
+
+                        <p>Logo</p>
+                        <h1>Hello! Welcome to site</h1>
+                        <p class="thin">If you already have an account</p>
+                        <button id="signIn">Sign In</button>
+
+                    </div>
+                    <div class="overlay__panel overlay--right">
+
+                        <p>Logo</p>
+                        <h1>Hello! Welcome to site</h1>
+                        <p class="thin">Don't have an account?</p>
+                        <button id="signUp">Sign Up</button>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container-form container-signin">
-          <form class="form1 form2" id="form2" >
-            <h2>LOGO</h2>
-            <div class="form-flex" >
-              <h1>Sign in</h1>
-
-              <div class="textbox" style="margin-top: 50px;">
-                <span class="icon">
-                  <i class="fas fa-envelope"></i>
-                </span>
-                <div>
-                  <p>Email</p>
-                  <input type="email" placeholder="Your EmailID" required />
-                </div>
-              </div>
-              <div class="textbox">
-                <span class="icon">
-                  <i class="fas fa-unlock"></i>
-                </span>
-                <div>
-                  <p>Password</p>
-                  <input type="password" placeholder="Your Password" required />
-                </div>
-              </div>
-
-              <p>By Clicking 'Sign in' button you agree to our Terms of Use</p>
-              <button type="submit">Sign in</button>
-            </div>
-          </form>
         </div>
-
-        <div class="container__overlay">
-          <div class="overlay">
-            <div class="overlay__panel overlay--left">
-              
-              <p>Logo</p>
-              <h1>Hello! Welcome to site</h1>
-              <p class="thin">If you already have an account</p>
-              <button  id="signIn">Sign In</button>
-
-            </div>
-            <div class="overlay__panel overlay--right">
-              
-              <p>Logo</p>
-              <h1>Hello! Welcome to site</h1>
-              <p class="thin">Don't have an account?</p>
-              <button  id="signUp">Sign Up</button>
-
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
     <script src="js/index.js"></script>
-  </body>
+</body>
+
 </html>
