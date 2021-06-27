@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel</title>
 
-    <link rel="stylesheet" href="./../sass/loginpage.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script
       src="https://kit.fontawesome.com/154fa5a621.js"
       crossorigin="anonymous"
@@ -15,7 +15,6 @@
   <body>
     <section class="background">
       <div class="container active-pannel">
-        <!-- sign up -->
         <div class="container-form container-signup">
           <form class="form1" id="form1">
             <h2>LOGO</h2>
@@ -67,15 +66,13 @@
             </div>
           </form>
         </div>
-
-        <!-- Sign in  -->
         <div class="container-form container-signin">
-          <form class="form1 form2" id="form2">
+          <form class="form1 form2" id="form2" >
             <h2>LOGO</h2>
-            <div class="form-flex">
+            <div class="form-flex" >
               <h1>Sign in</h1>
 
-              <div class="textbox">
+              <div class="textbox" style="margin-top: 50px;">
                 <span class="icon">
                   <i class="fas fa-envelope"></i>
                 </span>
@@ -100,18 +97,29 @@
           </form>
         </div>
 
-        <div class="container-overlay">
+        <div class="container__overlay">
           <div class="overlay">
-            <div class="overlay-panel overlay-left">
-              <button class="btn" id="signIn">Sign In</button>
+            <div class="overlay__panel overlay--left">
+              
+              <p>Logo</p>
+              <h1>Hello! Welcome to site</h1>
+              <p class="thin">If you already have an account</p>
+              <button  id="signIn">Sign In</button>
+
             </div>
-            <div class="overlay-panel overlay-right">
-              <button class="btn" id="signUp">Sign Up</button>
+            <div class="overlay__panel overlay--right">
+              
+              <p>Logo</p>
+              <h1>Hello! Welcome to site</h1>
+              <p class="thin">Don't have an account?</p>
+              <button  id="signUp">Sign Up</button>
+
+            </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <script src="js/index.js"></script>
   </body>
-  <script src="./../js/login.js"></script>
 </html>
