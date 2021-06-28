@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require('express');
 const path = require('path');
 const app = express();
-
 const PORT = process.env.PORT;
 require("./db/conn");
 const template_path = path.join(__dirname, "../templates/views");
@@ -19,7 +18,7 @@ app.get('/', (req, res) => {
 app.get('/signInUp', (req, res) => {
     res.render("signInUp")
 })
-app.post('/signin', async (req, res) => {
+app.post('/signup', async (req, res) => {
     try {
         const regUser = new User({
             name: req.body.name,
@@ -27,11 +26,26 @@ app.post('/signin', async (req, res) => {
             password: req.body.password
         })
         const signedin = await regUser.save()
-        res.status(201).render("index")
+        res.status(201).send("SignUp Successfull!");
 
     } catch (error) {
         res.status(400).send(error)
+    }
+})
+app.post('/signin', async (req, res) => {
+    try {
+        const email = req.body.email
+        const password = req.body.password
+        const userEmail = await User.findOne({ email, password })
+        if (!userEmail) {
+            res.status(400).send("Invalid Credentials!")
+        }
+        else {
+            res.status(201).send("Login Successfull!")
+        }
 
+    } catch (error) {
+        res.status(400).send(error)
     }
 })
 app.listen(PORT, () => {

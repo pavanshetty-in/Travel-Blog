@@ -15,7 +15,7 @@
     <section class="background">
         <div class="container active-pannel">
             <div class="container-form container-signup">
-                <form class="form1" id="form1" method="POST" action="/signin">
+                <form class="form1" id="form1" method="POST" action="/signup">
                     <h2>LOGO</h2>
                     <div class="form-flex">
                         <h1>Sign up</h1>
@@ -62,7 +62,7 @@
                 </form>
             </div>
             <div class="container-form container-signin">
-                <form class="form1 form2" id="form2">
+                <form class="form1 form2" id="form2" method="POST" action="/signin">
                     <h2>LOGO</h2>
                     <div class="form-flex">
                         <h1>Sign in</h1>
@@ -73,7 +73,7 @@
                             </span>
                             <div>
                                 <p>Email</p>
-                                <input type="email" placeholder="Your EmailID" required />
+                                <input type="email" placeholder="Your EmailID" required  name="email"/>
                             </div>
                         </div>
                         <div class="textbox">
@@ -82,7 +82,7 @@
                             </span>
                             <div>
                                 <p>Password</p>
-                                <input type="password" placeholder="Your Password" required />
+                                <input type="password" placeholder="Your Password" required name="password"/>
                             </div>
                         </div>
 
