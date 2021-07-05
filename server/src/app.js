@@ -62,26 +62,30 @@ app.post('/signup', async (req, res) => {
 //-----------------------
 app.post('/signin', async (req, res) => {
     try {
-        const email = req.body.email
-        const password = req.body.password
-        const userLogin = await User.findOne({ email })
-
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({ error: "Fill both the fields" });
+        }
+        const userLogin = await User.findOne({ email: email });
         if (userLogin) {
             const isMatch = await bcrypt.compare(password, userLogin.password);
 
             if (!isMatch) {
-                res.status(400).send("Invalid Credentials!")
+                return res.status(400).json({ error: "Invalid Credentials!" });
+            } else {
+                const token = await userLogin.generateAuthToken();
+                console.log("token:", token);
+                res.cookie("jwtoken", token, {
+                    expires: new Date(Date.now + 25892000000),
+                    httpOnly: true,
+                });
+                return res.json({ message: "User signedin successfully" });
             }
-            else {
-                res.status(201).send("Login Successfull!")
-            }
+        } else {
+            return res.status(400).json({ error: "Invalid Credentials!" });
         }
-        else {
-            res.status(400).send("Invalid Credentials");
-        }
-
-    } catch (error) {
-        res.status(400).send(error)
+    } catch (err) {
+        console.log(err);
     }
 })
 
