@@ -43,9 +43,15 @@ app.get('/signInUp', (req, res) => {
 //Blog Route
 //---------------------------
 app.get('/blog', Authenticate, (req, res) => {
+    console.log(req.rootUser);
     res.render("blog")
 })
-
+//Profile Route
+//---------------------------
+app.get('/profile', Authenticate, (req, res) => {
+    console.log(req.rootUser);
+    res.render("profile",{"blog":req.rootUser.blogs,"profile":req.rootUser})
+})
 //SignUp Route
 app.post('/signup', async (req, res) => {
     const { name, email, password, cpassword } = req.body;
