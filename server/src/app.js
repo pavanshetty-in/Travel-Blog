@@ -9,7 +9,8 @@ const PORT = process.env.PORT;
 
 //Bcrypt password
 const bcrypt = require("bcryptjs");
-
+//cookie-parser 
+const cookieParser = require("cookie-parser");
 //Database Connection
 require("./db/conn");
 
@@ -19,8 +20,10 @@ const static_path = path.join(__dirname, "../public");
 
 //UserSchema
 const User = require("./models/userSchema");
+const Authenticate = require("./middleware/authenticate");
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extend: false }));
 app.use(express.static(static_path));
 app.set("view engine", "hbs")
@@ -37,11 +40,15 @@ app.get('/', (req, res) => {
 app.get('/signInUp', (req, res) => {
     res.render("signInUp")
 })
+//Blog Route
+//---------------------------
+app.get('/blog', Authenticate, (req, res) => {
+    res.render("blog")
+})
 
 //SignUp Route
 app.post('/signup', async (req, res) => {
     const { name, email, password, cpassword } = req.body;
-
     try {
         const userExist = await User.findOne({ email: email });
         if (userExist) {
@@ -51,7 +58,7 @@ app.post('/signup', async (req, res) => {
         } else {
             const regUser = new User({ name, email, password });
             await regUser.save();
-            res.status(201).json({ message: "User registered successfully" });
+            res.status(201).render('signInUp');
         }
     } catch (err) {
         console.log(err);
@@ -79,7 +86,8 @@ app.post('/signin', async (req, res) => {
                     expires: new Date(Date.now + 25892000000),
                     httpOnly: true,
                 });
-                return res.json({ message: "User signedin successfully" });
+                return res.status(201).render('index');
+
             }
         } else {
             return res.status(400).json({ error: "Invalid Credentials!" });
@@ -88,6 +96,39 @@ app.post('/signin', async (req, res) => {
         console.log(err);
     }
 })
+//Create Blog 
+//--------------------------------
+app.post('/createBlog', Authenticate, async (req, res) => {
+    try {
+        const { blogname,blogcontent } = req.body;
+        if (!blogname || !blogcontent ) {
+            console.log("Plz fill the blog form");
+            return res.status(422).json({ error: "plz fill the blog form" });
+        }
+        const userBlog = await User.findOne({ _id: req.userID });
+
+        if (userBlog) {
+            const userMessage = await userBlog.addBlog(
+                blogname,
+                blogcontent
+            );
+            await userBlog.save();
+            res.status(201).json({ message: "User blog data sent successfully" });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+)
+//Logout User
+//----------------
+app.get("/logout", (req, res) => {
+    console.log("Hello from Logout");
+    res.clearCookie("jwtoken");
+    // res.status(200).send("Logout User");
+    res.status(201).render('index')
+});
 
 //Port Listener
 //----------------------------
