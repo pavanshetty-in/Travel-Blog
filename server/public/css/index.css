@@ -128,18 +128,18 @@
 .hero-container p {
   font-weight: 200;
 }
-.hero-container div {
+.hero-container button {
+  cursor: pointer;
   padding: 1.5vh 3vh;
   background-color: #fff;
   border: none;
-  cursor: pointer;
+
   color: #0e0d2d;
   margin-top: 2vh;
   font-weight: 600;
 }
-.hero-container div span
-{
-    margin-left: 1.5vh;
+.hero-container button span {
+  margin-left: 1.5vh;
 }
 
 .sec2 {
@@ -152,4 +152,56 @@
   background-color: #0e0d2d;
 
   background-image: linear-gradient(180deg, #0e0d2d, #1b1e61);
+}
+
+.sec-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 18vh;
+  color: #fff;
+}
+.sec-container h1 {
+  padding-top: 15vh;
+}
+.sec-head-border {
+  content: "";
+  display: inline-block;
+  min-height: 1px;
+  min-width: 100%;
+  background-color: #463db2;
+  margin-top: 2vh;
+}
+.card-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 10vh;
+}
+.card {
+  max-width: 320px;
+  padding: 20px;
+  background-color: #463db2;
+}
+.card-img {
+  width: 100%;
+  height: auto;
+}
+.card-div p {
+  font-weight: 200;
+  text-align: left;
+  padding: 1vh 0;
+}
+.card-div h3 {
+  text-align: left;
+}
+.card-div button {
+  color: #fff;
+  background-color: #ce3434;
+  border: none;
+  cursor: pointer;
+  padding: 1.5vh 3vh;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
 }
