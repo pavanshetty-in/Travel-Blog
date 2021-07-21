@@ -100,6 +100,46 @@
   align-self: center;
   cursor: pointer;
   font-size: 28px;
+  font-weight: 200;
+}
+.hero-container {
+  color: #fff;
+  position: fixed;
+  z-index: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  max-width: 1140px;
+  margin-right: 18vh;
+  margin-left: 18vh;
+
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.hero-container h1 {
+  font-weight: 800;
+  font-size: 36px;
+}
+.hero-container p {
+  font-weight: 200;
+}
+.hero-container div {
+  padding: 1.5vh 3vh;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  color: #0e0d2d;
+  margin-top: 2vh;
+  font-weight: 600;
+}
+.hero-container div span
+{
+    margin-left: 1.5vh;
 }
 
 .sec2 {
