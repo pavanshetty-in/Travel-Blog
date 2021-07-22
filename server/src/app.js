@@ -48,7 +48,7 @@ app.get("/blog", Authenticate, (req, res) => {
 });
 //Profile Route
 //---------------------------
-app.get("/profile", Authenticate, (req, res) => {
+app.get("/blogger", Authenticate, (req, res) => {
   console.log(req.rootUser);
   res.render("blogger", { blog: req.rootUser.blogs, profile: req.rootUser });
 });
@@ -94,7 +94,7 @@ app.post("/signin", async (req, res) => {
         });
 
         // return res.status(201).render("blogger", { profile: req.rootUser });
-        return res.redirect("/profile");
+        return res.redirect("/blogger");
       }
     } else {
       return res.status(400).json({ error: "Invalid Credentials!" });
