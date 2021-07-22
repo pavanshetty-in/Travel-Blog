@@ -190,7 +190,7 @@ app.post("/createBlog", Authenticate, async (req, res) => {
   try {
     const regBlog = new Blog({ name, email, blogname, blogcontent });
     await regBlog.save();
-    res.status(201).render("blog");
+    res.redirect("myblogs");
   } catch (err) {
     console.log(err);
   }

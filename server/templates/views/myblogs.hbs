@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav class="navbar nav-dark">
+        <div class="brand ">
+            <h1>LOGO</h1>
+        </div>
+        <div class="nav-items nav-item2">
+            <div class="nav-item">
+                <a href="/blogger" style="color:black"> Home</a>
+            </div>
+            <div class="nav-item nav-item2">
+                <p>About Us</p>
+            </div>
+            <div class="nav-item nav-item2">
+                <p>Contact Us</p>
+            </div>
+            <div class="nav-item nav-item2">
+                <a href="/blog">
+                    <p class="nav-item2">New Blog</p>
+                </a>
+            </div>
+            <div class="dropdown">
+                <button class="nav-item signin-button nav-item2 b-2">
+                    {{#profile}}
+                    <p>H! {{name}}</p>
+                    {{/profile}}
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">My Blogs</a>
+                    <a href="/logout">Logout</a>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    </nav>
+    <section style="margin:5vh 9vw">
+        {{#blog}}
+        <div style="width:70vw; margin:5vh 0;border: 2px solid black;padding:1vw;">
+        <h1>{{blogname}}</h1>
+        <p>{{blogcontent}}</p>
+        </div>
+        {{/blog}}
+    </section>
+</body>
+</html>
