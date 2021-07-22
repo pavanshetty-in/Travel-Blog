@@ -73,8 +73,8 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 20vh;
-  padding-left: 20vh;
+  padding-right: 10vw;
+  padding-left: 10vw;
   background-color: transparent;
   color: #fff;
   justify-content: space-between;
@@ -82,15 +82,23 @@
 .nav-items {
   display: flex;
   flex-direction: row;
-  margin: 2vh 5vh;
+  margin: 2vh 5vw;
   cursor: pointer;
 }
+.nav-items a{
+text-decoration: none;
+color: #fff;
+}
 .nav-item {
-  padding: 2vh 5vh;
+  padding: 2vh 2vw;
   align-self: center;
+  text-decoration: none;
 }
 .signin-button {
+  color: #fff;
   border: 2px solid #fff;
+   text-decoration: none;
+   
 }
 .signin-button:hover {
   color: #0e0d2d;
@@ -112,8 +120,8 @@
   display: flex;
   width: 100%;
   max-width: 1140px;
-  margin-right: 18vh;
-  margin-left: 18vh;
+  margin-right: 9vw;
+  margin-left: 9vw;
 
   flex-direction: column;
   -webkit-box-align: start;
@@ -174,7 +182,7 @@
 .card-div {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-around;
   text-align: center;
   margin-top: 10vh;
@@ -183,6 +191,7 @@
   max-width: 320px;
   padding: 20px;
   background-color: #463db2;
+  margin: 0 20px;
 }
 .card-img {
   width: 100%;
@@ -204,4 +213,55 @@
   padding: 1.5vh 3vh;
   margin-top: 3vh;
   margin-bottom: 5vh;
+}
+.sec3 {
+  position: relative;
+  z-index: 99;
+  min-height: 130vh;
+  background-color: #0e0d2d;
+}
+
+.s-3-slider-bg {
+  position: relative;
+  width: 80%;
+  height: 80vh;
+  margin-top: 80px;
+
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  background-color: #242275;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.sec3-info {
+  max-width: 50%;
+
+  padding-left: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.sec3-image {
+  /* overflow: visible;
+  right:-200px; */
+  position: absolute;
+  left: -15vw;
+  margin: 10vh 0;
+  width: 40vw;
+  height: auto;
+  align-self: center;
+}
+.sec3-info button {
+  color: #fff;
+  background-color: #ce3434;
+  width: 160px;
+  border: none;
+  cursor: pointer;
+  padding: 1.5vh 3vh;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+}
+.sec3-info h1 {
+  font-size: 32px;
 }
