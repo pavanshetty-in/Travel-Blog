@@ -115,13 +115,15 @@
     <a href="/signInUp">SignInUp</a>
     <a href="/logout">Logout</a>
     <a href="/profile">Profile</a>
-    <a href="/blog">Blog</a>
-    <div class="sec">
-        <div class="s1"></div>
-        <div class="c"></div>
-        <div class="s2"></div>
-        <div class="c"></div>
-    </div> --}}
+    <a href="/blog">CreateBlog</a>
+    <a href="/blogs">FindBlog</a>
+
+    {{#blog}}
+    <h1>{{name}}</h1>
+    <h2>{{email}}</h2>
+    <h2>{{blogname}}</h2>
+    <p>{{blogcontent}}</p>
+    {{/blog}}
 </body>
 
 </html>

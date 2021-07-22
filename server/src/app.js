@@ -21,6 +21,7 @@ const static_path = path.join(__dirname, "../public");
 //UserSchema
 const User = require("./models/userSchema");
 const Authenticate = require("./middleware/authenticate");
+const Blog = require("./models/blogSchema");
 
 app.use(express.json());
 app.use(cookieParser());
@@ -31,9 +32,58 @@ app.set("views", template_path);
 
 //Home Route
 //---------------------------
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.get('/', async (req, res) => {
+    try {
+        const userBlog = await Blog.find();
+        if (!userBlog) {
+            throw new Error("User not found");
+        }
+        const userBlogs = userBlog.slice(0, 3);
+        res.render("index", { "blog": userBlogs })
+    } catch (err) {
+        res.status(401).send("Unauthorized:No token provided");
+        console.log(err);
+    }
+})
+//Blogs Route
+//----------------
+app.get('/blogs', async (req, res) => {
+    try {
+        const userBlog = await Blog.find();
+        if (!userBlog) {
+            throw new Error("User not found");
+        }
+        res.render("blogs", { "blog": userBlog })
+    } catch (err) {
+        res.status(401).send("Unauthorized:No token provided");
+        console.log(err);
+    }
+})
+//FindBlogs Route
+//----------------
+app.post('/blogs', async (req, res) => {
+    const blogname = req.body.blogname;
+    console.log(blogname);
+    try {
+        let rootBlog = null;
+
+        if (blogname == "") {
+            rootBlog = await Blog.find();
+        } else {
+            rootBlog = await Blog.find({ blogname: blogname });
+        }
+
+        if (!rootBlog) {
+            throw new Error("Blog not found");
+        }
+        req.rootBlog = rootBlog;
+        res.render("blogs", { "blog": req.rootBlog })
+
+    } catch (err) {
+        res.status(401).send("Unauthorized:No token provided");
+        console.log(err);
+    }
+})
 
 //SignInUp Route
 //---------------------------
@@ -48,10 +98,21 @@ app.get("/blog", Authenticate, (req, res) => {
 });
 //Profile Route
 //---------------------------
-app.get("/blogger", Authenticate, (req, res) => {
-  console.log(req.rootUser);
-  res.render("blogger", { blog: req.rootUser.blogs, profile: req.rootUser });
-});
+app.get('/profile', Authenticate, async (req, res) => {
+    try {
+        const email = req.rootUser.email;
+        const userBlog = await Blog.find({ email: email });
+        if (!userBlog) {
+            throw new Error("User not found");
+        }
+        req.userBlog = userBlog;
+        res.render("profile", { "blog": req.userBlog, "profile": req.rootUser })
+    } catch (err) {
+        res.status(401).send("Unauthorized:No token provided");
+        console.log(err);
+    }
+    // res.render("profile", { "blog": req.rootUser.blogs, "profile": req.rootUser })
+})
 //SignUp Route
 app.post("/signup", async (req, res) => {
   const { name, email, password, cpassword } = req.body;
@@ -105,24 +166,20 @@ app.post("/signin", async (req, res) => {
 });
 //Create Blog
 //--------------------------------
-app.post("/createBlog", Authenticate, async (req, res) => {
-  try {
+app.post('/createBlog', Authenticate, async (req, res) => {
+    const { name, email } = req.rootUser;
     const { blogname, blogcontent } = req.body;
-    if (!blogname || !blogcontent) {
-      console.log("Plz fill the blog form");
-      return res.status(422).json({ error: "plz fill the blog form" });
+    try {
+        const regBlog = new Blog({ name, email, blogname, blogcontent });
+        await regBlog.save();
+        res.status(201).render('blog');
+
+    } catch (err) {
+        console.log(err);
     }
     const userBlog = await User.findOne({ _id: req.userID });
 
-    if (userBlog) {
-      const userMessage = await userBlog.addBlog(blogname, blogcontent);
-      await userBlog.save();
-      res.status(201).json({ message: "User blog data sent successfully" });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-});
+})
 //Logout User
 //----------------
 app.get("/logout", (req, res) => {
