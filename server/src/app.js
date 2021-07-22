@@ -44,13 +44,13 @@ app.get("/signInUp", (req, res) => {
 //---------------------------
 app.get("/blog", Authenticate, (req, res) => {
   console.log(req.rootUser);
-  res.render("blog");
+  res.render("blog", { profile: req.rootUser });
 });
 //Profile Route
 //---------------------------
 app.get("/profile", Authenticate, (req, res) => {
   console.log(req.rootUser);
-  res.render("blogger", { 'blog': req.rootUser.blogs, 'profile': req.rootUser });
+  res.render("blogger", { blog: req.rootUser.blogs, profile: req.rootUser });
 });
 //SignUp Route
 app.post("/signup", async (req, res) => {

@@ -297,3 +297,18 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.nav-dark {
+  position: relative;
+  color: #000000;
+}
+.nav-item2 {
+  color: #000000;
+}
+.b-2 {
+  border: 2px solid #000000;
+}
+.b-2:hover
+{
+  background-color:#ddd;
+}
