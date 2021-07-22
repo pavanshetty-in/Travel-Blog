@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://kit.fontawesome.com/154fa5a621.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <h1>LOGO</h1>
+        </div>
+        <div class="nav-items">
+            <div class="nav-item">
+                <p>Home</p>
+            </div>
+            <div class="nav-item">
+                <p>About Us</p>
+            </div>
+            <div class="nav-item">
+                <p>Contact Us</p>
+            </div>
+            <div class="nav-item">
+                <p>New Blog</p>
+            </div>
+            <a href="/signInUp">
+                <div class="nav-item signin-button">
+                    {{#profile}}
+                    <p>H! {{name}}</p>
+                    {{/profile}}
+                </div>
+            </a>
+        </div>
+    </nav>
+    <section class="hero-sec">
+        <div class="sky"></div>
+        <div class="foreground"></div>
+        <div class="mountain"></div>
+        <div class="hero-container">
+            <h1>
+                The World is a Book, <br />Those Who do not Travel<br />Read Only One
+                Page
+            </h1>
+            <p>Start New Blog now</p>
+            <button>Write Now <span class="fas fa-chevron-right"></span></button>
+        </div>
+    </section>
+    
+</body>
+</html>
