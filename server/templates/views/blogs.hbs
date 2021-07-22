@@ -6,17 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>Travel Blog</h1>
-    <a href="/signInUp">SignInUp</a>
-    <a href="/logout">Logout</a>
-    <a href="/profile">Profile</a>
-    <a href="/blog">CreateBlog</a>
-    <a href="/blogs">FindBlog</a>
-
+    <form class="form1" id="form1" method="POST" action="/blogs">
+        <input name="blogname" type="text" placeholder="Blog Name" required />
+        <button type="submit">Fetch</button>
+    </form>
     {{#blog}}
     <h1>{{name}}</h1>
     <h2>{{email}}</h2>
