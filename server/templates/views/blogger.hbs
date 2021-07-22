@@ -24,15 +24,22 @@
                 <p>Contact Us</p>
             </div>
             <div class="nav-item">
-                <p>New Blog</p>
+                <a href="/blog"><p>New Blog</p></a>
             </div>
-            <a href="/signInUp">
-                <div class="nav-item signin-button">
+            <div class="dropdown">
+                <button class="nav-item signin-button ">
                     {{#profile}}
                     <p>H! {{name}}</p>
                     {{/profile}}
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">My Blogs</a>
+                    <a href="/logout">Logout</a>
+                    
                 </div>
-            </a>
+               
+             </div>
+            
         </div>
     </nav>
     <section class="hero-sec">
@@ -45,7 +52,7 @@
                 Page
             </h1>
             <p>Start New Blog now</p>
-            <button>Write Now <span class="fas fa-chevron-right"></span></button>
+        <a href="/blog"> <button>Write Now <span class="fas fa-chevron-right"></span></button></a>
         </div>
     </section>
     
