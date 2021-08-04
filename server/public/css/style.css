@@ -3,7 +3,83 @@
   margin: 0;
   padding: 0;
 }
-
+.box {
+  position: absolute;
+  margin-top: 20vh;
+  margin-left: 25%;
+  margin-top: 15%;
+  width: 300px;
+  height: 60px;
+  overflow: hidden;
+}
+.box .b1 {
+  width: 300px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 10px;
+}
+.box .b1::before {
+  content: "abc";
+  position: absolute;
+  top: -105%;
+  left: -48.5%;
+  width: 300px;
+  height: 100px;
+  background: rgb(119, 119, 119);
+  transform: rotate(4.5deg);
+}
+.box .b1::after {
+  content: "abc";
+  position: absolute;
+  top: -105%;
+  left: 48.5%;
+  width: 300px;
+  height: 100px;
+  background: rgb(119, 119, 119);
+  transform: rotate(-4.5deg);
+}
+.sec {
+  width: 73vw;
+  height: 10vh;
+  margin-left: 1vw;
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns: 36vw 36vw;
+  gap: 1vw;
+}
+.sec .s1 {
+  grid-column: 1;
+}
+.sec .s1::before {
+  margin-top: 3vh;
+  content: "";
+  position: absolute;
+  width: 18vw;
+  height: 5vh;
+  background: skyblue;
+  transform: skewY(5deg);
+  border-radius: 0 0 0px 10px;
+}
+.sec .s1::after {
+  margin-top: 3vh;
+  content: "";
+  position: absolute;
+  left: 19vw;
+  width: 18vw;
+  height: 5vh;
+  background: skyblue;
+  transform: skewY(-5deg);
+  border-radius: 0 0 10px 0;
+}
+.sec .c {
+  position: absolute;
+  width: 36vw;
+  height: 5vh;
+  background: skyblue;
+}
+.sec .s2 {
+  grid-column: 2;
+}
 .background {
   background-color: #1b1e5f;
   font-family: "Poppins", sans-serif;
@@ -280,18 +356,8 @@
 
 .btn {
   background-color: var(--blue);
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(var(--blue)),
-    color-stop(74%, var(--lightblue))
-  );
-  background-image: linear-gradient(
-    90deg,
-    var(--blue) 0%,
-    var(--lightblue) 74%
-  );
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--blue)), color-stop(74%, var(--lightblue)));
+  background-image: linear-gradient(90deg, var(--blue) 0%, var(--lightblue) 74%);
   border-radius: 20px;
   border: 1px solid var(--blue);
   color: var(--white);

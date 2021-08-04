@@ -1,4 +1,4 @@
-//ENV environment variable file
+//ENV environment constiable file
 require("dotenv").config();
 
 const express = require("express");
@@ -6,14 +6,25 @@ const path = require("path");
 const app = express();
 //Port
 const PORT = process.env.PORT;
-
 //Bcrypt password
 const bcrypt = require("bcryptjs");
 //cookie-parser
 const cookieParser = require("cookie-parser");
 //Database Connection
 require("./db/conn");
+//Multer fileupload
+const multer = require("multer");
 
+var upload = multer({ dest: 'uploads/' });
+
+//Cloudinary connection
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: "726957624429913",
+  api_secret: process.env.API_SECRET,
+  secure: true
+});
 //Template Path
 const template_path = path.join(__dirname, "../templates/views");
 const static_path = path.join(__dirname, "../public");
@@ -25,6 +36,7 @@ const Blog = require("./models/blogSchema");
 
 app.use(express.json());
 app.use(cookieParser());
+// app.use(fileUpload());
 app.use(express.urlencoded({ extend: false }));
 app.use(express.static(static_path));
 app.set("view engine", "hbs");
@@ -184,17 +196,21 @@ app.post("/signin", async (req, res) => {
 });
 //Create Blog
 //--------------------------------
-app.post("/createBlog", Authenticate, async (req, res) => {
-  const { name, email } = req.rootUser;
-  const { blogname, blogcontent } = req.body;
-  try {
-    const regBlog = new Blog({ name, email, blogname, blogcontent });
-    await regBlog.save();
-    res.redirect("myblogs");
-  } catch (err) {
-    console.log(err);
-  }
-  const userBlog = await User.findOne({ _id: req.userID });
+app.post("/createBlog", Authenticate, upload.single("photo"), (req, res) => {
+  const pic = req.file;
+  cloudinary.uploader.upload(pic.path, async (err, result) => {
+    const { name, email } = req.rootUser;
+    const { blogname, blogcontent } = req.body;
+    const blogimage = result.secure_url;
+    try {
+      const regBlog = new Blog({ name, email, blogname, blogcontent, blogimage });
+      await regBlog.save();
+      res.redirect("myblogs");
+    } catch (err) {
+      console.log(err);
+    }
+    const userBlog = await User.findOne({ _id: req.userID });
+  })
 });
 //Logout User
 //----------------
