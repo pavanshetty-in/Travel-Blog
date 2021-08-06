@@ -15,15 +15,15 @@ require("./db/conn");
 //Multer fileupload
 const multer = require("multer");
 
-var upload = multer({ dest: 'uploads/' });
+var upload = multer({ dest: "uploads/" });
 
 //Cloudinary connection
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
-  api_key: "726957624429913",
+  api_key: "823225572349428",
   api_secret: process.env.API_SECRET,
-  secure: true
+  secure: true,
 });
 //Template Path
 const template_path = path.join(__dirname, "../templates/views");
@@ -50,6 +50,7 @@ app.get("/", async (req, res) => {
     if (!userBlog) {
       throw new Error("User not found");
     }
+    console.log(userBlog);
     const userBlogs = userBlog.slice(0, 3);
     res.render("index", { blog: userBlogs });
   } catch (err) {
@@ -203,14 +204,20 @@ app.post("/createBlog", Authenticate, upload.single("photo"), (req, res) => {
     const { blogname, blogcontent } = req.body;
     const blogimage = result.secure_url;
     try {
-      const regBlog = new Blog({ name, email, blogname, blogcontent, blogimage });
+      const regBlog = new Blog({
+        name,
+        email,
+        blogname,
+        blogcontent,
+        blogimage,
+      });
       await regBlog.save();
       res.redirect("myblogs");
     } catch (err) {
       console.log(err);
     }
     const userBlog = await User.findOne({ _id: req.userID });
-  })
+  });
 });
 //Logout User
 //----------------
