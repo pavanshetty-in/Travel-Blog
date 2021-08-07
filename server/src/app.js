@@ -219,6 +219,14 @@ app.post("/createBlog", Authenticate, upload.single("photo"), (req, res) => {
     const userBlog = await User.findOne({ _id: req.userID });
   });
 });
+
+app.get("/blog/:blogID", async (req, res) => {
+  let blogID = req.params.blogID;
+  const fullBlog = await Blog.find({ _id: blogID });
+  console.log(fullBlog);
+  res.status(201).render("blog", { fullBlog: fullBlog });
+
+});
 //Logout User
 //----------------
 app.get("/logout", (req, res) => {
