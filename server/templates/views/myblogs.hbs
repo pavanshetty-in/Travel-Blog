@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/viewblog.css">
 </head>
+
 <body>
     <nav class="navbar nav-dark">
         <div class="brand ">
@@ -38,22 +40,30 @@
                 <div class="dropdown-content">
                     <a href="/myblogs">My Blogs</a>
                     <a href="/logout">Logout</a>
-    
+
                 </div>
-    
+
             </div>
-    
+
         </div>
     </nav>
     <section style="margin:5vh 9vw">
         {{#blog}}
         <div style="width:70vw; margin:5vh 0;border: 2px solid black;padding:1vw;">
-        <h1>{{blogname}}</h1>
-        <img src={{blogimage}} alt="blog" height="400">
-        <p>{{blogcontent}}</p>
-        
+            <h1>{{blogname}}</h1>
+            <h3>{{ dateFormat createdAt "dd, MM Do YY, h:mm:ss a" }}</h3>
+            <img src={{blogimage}} alt="blog" height="400">
+            <p>{{blogcontent}}</p>
+            <a href="/myblog/{{_id}}">
+                <button>edit</button> </a>
+            <form action="/deleteBlog/{{_id}}?_method=DELETE" method="POST">
+                <button type="submit">
+                    delete
+                </button>
+            </form>
         </div>
         {{/blog}}
     </section>
 </body>
+
 </html>
