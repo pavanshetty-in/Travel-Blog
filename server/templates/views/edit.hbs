@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/createblog.css">
+</head>
+
+<body>
+    <div class="container-createblog">
+        {{#fullBlog}}
+        <h1></h1>
+        <form class="form1" id="form1" method="POST" action="/editBlog/{{_id}}?_method=PUT">
+            <h2>Blog Titile</h2>
+            <input class="textbox-blog-title" value={{blogname}} name="blogname" type="text" placeholder="Blog Name"
+                required />
+            <h2>Blog desc</h2>
+            <textarea class="textbox-blog-body" name="blogcontent" id="" cols="30" rows="10">{{blogcontent}} </textarea>
+            <h2>Blog </h2>
+            <textarea class="textbox-blog-body" name="blogdesc" id="" cols="30" rows="10">{{blogdesc}}</textarea>
+            <h2>tags</h2>
+            <textarea class="textbox-blog-body" name="tags" id="" cols="30" rows="10">{{tags}}</textarea>
+            <button class="create-btn" type="submit">Update</button>
+            {{/fullBlog}}
+        </form>
+    </div>
+</body>
+
+</html>
