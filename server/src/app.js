@@ -1,7 +1,7 @@
 //ENV environment constiable file
 require("dotenv").config();
 
-const hbs = require('hbs');
+const hbs = require("hbs");
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -18,7 +18,7 @@ require("./db/conn");
 const multer = require("multer");
 var upload = multer({ dest: "uploads/" });
 
-hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+hbs.registerHelper("dateFormat", require("handlebars-dateformat"));
 //Cloudinary connection
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
@@ -39,7 +39,7 @@ const Blog = require("./models/blogSchema");
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(methodOverride('_method'));
+app.use(methodOverride("_method"));
 // app.use(fileUpload());
 app.use(express.urlencoded({ extend: false }));
 app.use(express.static(static_path));
@@ -50,12 +50,12 @@ app.set("views", template_path);
 //---------------------------
 app.get("/", async (req, res) => {
   try {
-    const userBlog = await Blog.find().sort({ createdAt: 'desc' });
+    const userBlog = await Blog.find().sort({ createdAt: "desc" });
     if (!userBlog) {
       throw new Error("User not found");
     }
     console.log(userBlog);
-    const userBlogs = userBlog.slice(0, 3);
+    const userBlogs = userBlog.slice(0, 4);
     res.render("index", { blog: userBlogs });
   } catch (err) {
     res.status(401).send("Unauthorized:No token provided");
@@ -135,7 +135,9 @@ app.get("/blogger", Authenticate, async (req, res) => {
 app.get("/myblogs", Authenticate, async (req, res) => {
   try {
     const email = req.rootUser.email;
-    const userBlog = await Blog.find({ email: email }).sort({ createdAt: 'desc' });
+    const userBlog = await Blog.find({ email: email }).sort({
+      createdAt: "desc",
+    });
     if (!userBlog) {
       throw new Error("User not found");
     }
@@ -214,7 +216,7 @@ app.post("/createBlog", Authenticate, upload.single("photo"), (req, res) => {
         blogdesc,
         blogcontent,
         blogimage,
-        tags
+        tags,
       });
       await regBlog.save();
       res.redirect("myblogs");
@@ -235,25 +237,25 @@ app.get("/myblog/:blogID", Authenticate, async (req, res) => {
 //Edit Blog
 app.put("/editBlog/:id", Authenticate, async (req, res) => {
   try {
-    const _id = req.params.id
+    const _id = req.params.id;
     const blog = await Blog.findByIdAndUpdate(_id, req.body, {
-      new: true
-    })
+      new: true,
+    });
     res.redirect("/myblogs");
     console.log(blog);
   } catch (err) {
-    res.status(500).send(err)
+    res.status(500).send(err);
   }
 });
 //Delete Blog
 app.delete("/deleteBlog/:id", Authenticate, async (req, res) => {
   try {
-    const _id = req.params.id
-    const blog = await Blog.findByIdAndDelete(_id)
+    const _id = req.params.id;
+    const blog = await Blog.findByIdAndDelete(_id);
     res.redirect("/myblogs");
     console.log(blog);
   } catch (err) {
-    res.status(500).send(err)
+    res.status(500).send(err);
   }
 });
 //Logout User

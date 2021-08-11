@@ -60,37 +60,33 @@
                     <span class="">
                         <img class="card-img" src="assets/cardimg.jpg" alt="" />
                     </span>
-                    <h3>{{blogname}}</h3>
+                    <h3>{{blog.1.blogname}}</h3>
                     <p>
-                        {{blogcontent}}
+                        {{blog.1.blogcontent}}
                     </p>
-                    <button>Read More</button>
+                   <a href="{{blog.1._id}}"> <button>Read More</button></a>
                 </div>
     
                 <div class="card">
                     <span class="">
                         <img class="card-img" src="assets/cardimg.jpg" alt="" />
                     </span>
-                    <h3>Blog Headding lorem ipsum dolor sit amet</h3>
+                    <h3>{{blog.3.blogname}}</h3>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-                        dicta laudantium quis aliquam quo explicabo eveniet voluptates
-                        expedita quam quia, accusamus amet eum cumque debitis.
+                    {{blog.3.blogcontent}}
                     </p>
-                    <button>Read More</button>
+                    <a href="{{blog.3._id}}"><button>Read More</button></a>
                 </div>
     
                 <div class="card">
                     <span class="">
                         <img class="card-img" src="assets/cardimg.jpg" alt="" />
                     </span>
-                    <h3>Blog Headding lorem ipsum dolor sit amet</h3>
+                    <h3>{{blog.0.blogname}}</h3>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-                        dicta laudantium quis aliquam quo explicabo eveniet voluptates
-                        expedita quam quia, accusamus amet eum cumque debitis.
+                        {{blog.0.blogcontent}}
                     </p>
-                    <button>Read More</button>
+                    <a href="{{blog.0._id}}"></a><button>Read More</button></a>
                 </div>
             </div>
         </div>
