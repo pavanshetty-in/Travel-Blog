@@ -167,6 +167,26 @@ app.post("/signup", async (req, res) => {
     console.log(err);
   }
 });
+//Comment route
+app.post("/comment/:blogID", async (req, res) => {
+  try {
+    let blogID = req.params.blogID;
+    // const commentedBy = req.rootUser.email;
+    const { comment } = req.body;
+    const userComment = await Blog.findOne({ _id: blogID });
+
+    if (userComment) {
+      const userComments = await userComment.addComment(
+        // commentedBy,
+        comment
+      );
+      await userComment.save();
+      res.redirect("/blog/" + blogID);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 //SignIn Route
 //-----------------------
@@ -237,9 +257,10 @@ app.get("/myblog/:blogID", Authenticate, async (req, res) => {
 
 app.get("/blog/:blogID", async (req, res) => {
   let blogID = req.params.blogID;
-  const fullBlog = await Blog.find({ _id: blogID });
+  const fullBlog = await Blog.findOne({ _id: blogID });
   console.log(fullBlog);
-  res.status(201).render("blog", { fullBlog: fullBlog });
+  console.log(fullBlog.comments);
+  res.status(201).render("blog", { fullBlog: fullBlog, comm: fullBlog.comments });
 });
 
 app.get;
@@ -267,6 +288,7 @@ app.delete("/deleteBlog/:id", Authenticate, async (req, res) => {
     res.status(500).send(err);
   }
 });
+
 //Logout User
 //----------------
 app.get("/logout", (req, res) => {

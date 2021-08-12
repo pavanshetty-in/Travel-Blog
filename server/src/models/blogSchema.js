@@ -33,9 +33,29 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    comments: [
+        {
+            commentedBy: {
+                type: String
+            },
+            comment: {
+                type: String
+            },
+        }
+    ]
 
 });
-
+//Blog comment function
+//-------------------------
+blogSchema.methods.addComment = async function ( comment) {
+    try {
+        this.comments = this.comments.concat({ comment });
+        await this.save();
+        return this.comments;
+    } catch (error) {
+        console.log(error);
+    }
+};
 const Blog = mongoose.model("BLOG", blogSchema);
 
 module.exports = Blog;
