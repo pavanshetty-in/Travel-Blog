@@ -42,15 +42,16 @@
 .ms-2 {
   margin-left: 1vw;
 }
-.search-btn
-{
-    color: #fff;
+.search-btn {
+  color: #fff;
   background-color: #ce3434;
   border: none;
   cursor: pointer;
   padding: 1vh 2vh;
 }
-.search-inp
-{
-    padding: 1vh 2vh;
+.search-inp {
+  padding: 1vh 2vh;
+}
+.mb-1 {
+  margin-bottom: 3vh;
 }

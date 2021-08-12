@@ -23,8 +23,8 @@ hbs.registerHelper("dateFormat", require("handlebars-dateformat"));
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
-  // api_key: "823225572349428",
-  api_key: "726957624429913",
+  api_key: "823225572349428",
+  // api_key: "726957624429913",
   api_secret: process.env.API_SECRET,
   secure: true,
 });
@@ -234,6 +234,15 @@ app.get("/myblog/:blogID", Authenticate, async (req, res) => {
   console.log(fullBlog);
   res.status(201).render("edit", { fullBlog: fullBlog });
 });
+
+app.get("/blog/:blogID", async (req, res) => {
+  let blogID = req.params.blogID;
+  const fullBlog = await Blog.find({ _id: blogID });
+  console.log(fullBlog);
+  res.status(201).render("blog", { fullBlog: fullBlog });
+});
+
+app.get;
 //Edit Blog
 app.put("/editBlog/:id", Authenticate, async (req, res) => {
   try {
