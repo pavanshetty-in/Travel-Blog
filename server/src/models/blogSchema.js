@@ -13,10 +13,27 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    blogimage: {
+        type: String,
+        required: true,
+    },
+    blogdesc: {
+        type: String,
+        required: true,
+    },
     blogcontent: {
         type: String,
         required: true,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    tags: {
+        type: String,
+        required: true,
+    },
+
 });
 
 const Blog = mongoose.model("BLOG", blogSchema);
