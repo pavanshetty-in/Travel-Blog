@@ -58,33 +58,33 @@
             <div class="card-div">
                 <div class="card">
                     <span class="">
-                        <img class="card-img" src="assets/cardimg.jpg" alt="" />
+                        <img class="card-img" src="{{blog.0.blogimage}}" alt="" />
                     </span>
-                    <h3>{{blog.1.blogname}}</h3>
+                    <h3>{{blog.0.blogname}}</h3>
                     <p>
-                        {{blog.1.blogcontent}}
+                        {{blog.0.blogdesc}}
                     </p>
                    <a href="/blog/{{blog.1._id}}"> <button>Read More</button></a>
                 </div>
     
                 <div class="card">
                     <span class="">
-                        <img class="card-img" src="assets/cardimg.jpg" alt="" />
+                        <img class="card-img" src="{{blog.1.blogimage}}" alt="" />
                     </span>
-                    <h3>{{blog.3.blogname}}</h3>
+                    <h3>{{blog.1.blogname}}</h3>
                     <p>
-                    {{blog.3.blogcontent}}
+                    {{blog.1.blogdesc}}
                     </p>
                     <a href="/blog/{{blog.3._id}}"><button>Read More</button></a>
                 </div>
     
                 <div class="card">
                     <span class="">
-                        <img class="card-img" src="assets/cardimg.jpg" alt="" />
+                        <img class="card-img" src="{{blog.2.blogimage}}" alt="" />
                     </span>
-                    <h3>{{blog.0.blogname}}</h3>
+                    <h3>{{blog.2.blogname}}</h3>
                     <p>
-                        {{blog.0.blogcontent}}
+                        {{blog.2.blogdesc}}
                     </p>
                     <a href="/blog/{{blog.0._id}}"></a><button>Read More</button></a>
                 </div>

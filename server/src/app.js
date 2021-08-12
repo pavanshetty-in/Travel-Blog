@@ -161,7 +161,7 @@ app.post("/signup", async (req, res) => {
     } else {
       const regUser = new User({ name, email, password });
       await regUser.save();
-      res.status(201).render("signInUp");
+      res.redirect("/signInUp");
     }
   } catch (err) {
     console.log(err);
@@ -273,7 +273,7 @@ app.get("/logout", (req, res) => {
   console.log("Hello from Logout");
   res.clearCookie("jwtoken");
   // res.status(200).send("Logout User");
-  res.status(201).render("index");
+  res.redirect("/");
 });
 
 //Port Listener
