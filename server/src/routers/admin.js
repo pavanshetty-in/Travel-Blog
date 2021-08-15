@@ -86,6 +86,7 @@ adminRouter.get("/admin/users", adminAuthenticate, async (req, res) => {
       throw new Error("User not found");
     }
     console.log(users);
+    res.render("admin-users", { users: users });
   } catch (err) {
     res.status(401).send("Unauthorized:No token provided");
     console.log(err);
@@ -99,10 +100,14 @@ adminRouter.get("/admin/blogs", adminAuthenticate, async (req, res) => {
       throw new Error("User not found");
     }
     console.log(blogs);
+    res.render("admin-blogs", { blogs: blogs });
   } catch (err) {
     res.status(401).send("Unauthorized:No token provided");
     console.log(err);
   }
+});
+adminRouter.get("/admin",(req,res)=>{
+return res.redirect("/adminpage");
 });
 
 adminRouter.post("/adminlogin", async (req, res) => {
