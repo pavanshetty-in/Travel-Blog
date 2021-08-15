@@ -112,6 +112,10 @@ app.get("/blog", Authenticate, (req, res) => {
   console.log(req.rootUser);
   res.render("Createblog", { profile: req.rootUser });
 });
+app.get("/Contactus", (req, res) => {
+  res.render("contactus");
+});
+
 //Blogger Profile Route
 //---------------------------
 app.get("/blogger", Authenticate, async (req, res) => {

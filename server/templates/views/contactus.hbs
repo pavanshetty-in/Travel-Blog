@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel City</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/contactus.css" />
+    <script src="https://kit.fontawesome.com/154fa5a621.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <h1>LOGO</h1>
+        </div>
+        <div class="nav-items">
+            <div class="nav-item">
+                <p>Home</p>
+            </div>
+            <div class="nav-item">
+                <p>About Us</p>
+            </div>
+            <a href="/blogs">
+                <div class="nav-item">
+                    <p>blogs</p>
+                </div>
+            </a>
+            <div class="nav-item">
+                <p>Contact Us</p>
+            </div>
+            
+        </div>
+    </nav>
+</body>
+<section class="contact-body">
+    <h1>Contact Us</h1>
+    <span class="underline"></span>
+    <h5>Have any Questions or Commants?</h5>
+    <form action="">
+        <div class="textbox">
+            <span class="icon">
+                <i class="fas fa-user"></i>
+            </span>
+            <div>
+                <p>Name</p>
+                <input name="name" type="text" placeholder=" Your Full Name" pattern="[A-Za-z\s]+" required />
+            </div>
+        </div>
+        <div class="textbox">
+            <span class="icon">
+                <i class="fas fa-envelope"></i>
+            </span>
+            <div>
+                <p>Email</p>
+                <input name="email" type="email" placeholder="Your EmailID" required />
+            </div>
+        </div>
+        <div class="textbox">
+            <span class="icon">
+                <i class="fas fa-envelope"></i>
+            </span>
+            <div>
+                <p>Subject</p>
+                <input name="subject" type="text" placeholder="Subject" required />
+            </div>
+        </div>
+        <div class="textbox">
+            <span class="icon">
+                <i class="fas fa-envelope"></i>
+            </span>
+            <div>
+                <p>Subject</p>
+                <textarea name="message" type="text" placeholder="Message" required cols="30" rows="5"></textarea>
+            </div>
+        </div>
+        <button class="sendbtn" type="submit">Send</button>
+    </form>
+
+</section>
+</html>

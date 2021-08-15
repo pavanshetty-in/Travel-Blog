@@ -1,0 +1,43 @@
+.contact-body {
+  min-height: 100vh;
+  background-color: #0e0d2d;
+  /* padding-top: 20vh; */
+  display: flex;
+  flex-direction: Column;
+  align-items: center;
+  justify-content: center;
+}
+.contact-body h1 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 1vh;
+}
+.contact-body h5 {
+  color: #fff;
+
+  font-weight: 300;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.underline {
+  display: inline-block;
+  min-height: 2px;
+  min-width: 150px;
+  background-color: white;
+}
+
+.sendbtn {
+  margin: 0.5vw 0;
+  background-color: #7b98da;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.8vw 0;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 1vw;
+}
