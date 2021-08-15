@@ -116,6 +116,10 @@ app.get("/Contactus", (req, res) => {
   res.render("contactus");
 });
 
+app.get("/aboutus", (req, res) => {
+  res.render("aboutus");
+});
+
 //Blogger Profile Route
 //---------------------------
 app.get("/blogger", Authenticate, async (req, res) => {
@@ -264,7 +268,9 @@ app.get("/blog/:blogID", async (req, res) => {
   const fullBlog = await Blog.findOne({ _id: blogID });
   console.log(fullBlog);
   console.log(fullBlog.comments);
-  res.status(201).render("blog", { fullBlog: fullBlog, comm: fullBlog.comments });
+  res
+    .status(201)
+    .render("blog", { fullBlog: fullBlog, comm: fullBlog.comments });
 });
 
 app.get;
