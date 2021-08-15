@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userSchema");
+const User2 = require("../models/user2Schema");
 
 const Authenticate = async (req, res, next) => {
   try {
@@ -10,15 +11,21 @@ const Authenticate = async (req, res, next) => {
       "tokens.token": token,
     });
     if (!rootUser) {
-      throw new Error("User not found");
+      const rootUser2 = await User2.findOne({
+        _id: verifyToken._id,
+        "tokens.token": token,
+      });
+      req.token = token;
+      req.rootUser = rootUser2;
+      req.userID = rootUser2._id;
+      next();
     }
-    else{
-      console.log("found");
+    else {
+      req.token = token;
+      req.rootUser = rootUser;
+      req.userID = rootUser._id;
+      next();
     }
-    req.token = token;
-    req.rootUser = rootUser;
-    req.userID = rootUser._id;
-    next();
   } catch (err) {
     res.status(401).send("Unauthorized:No token provided");
     console.log(err);
