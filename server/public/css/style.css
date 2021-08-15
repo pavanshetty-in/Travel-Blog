@@ -294,6 +294,9 @@
   background: url("../assets/login122.jpg");
   /* background-size: -200%; */
 }
+.overlayadmin {
+  background: url("../assets/signin2.jpg");
+}
 
 .container.active-panel .overlay {
   -webkit-transform: translateX(50%);
