@@ -72,6 +72,7 @@ adminRouter.get("/admin/bloggers", adminAuthenticate, async (req, res) => {
       throw new Error("User not found");
     }
     console.log(bloggers);
+    res.render("admin-bloggers", { bloggers: bloggers });
   } catch (err) {
     res.status(401).send("Unauthorized:No token provided");
     console.log(err);
