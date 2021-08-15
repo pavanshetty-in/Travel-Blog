@@ -34,10 +34,8 @@ const static_path = path.join(__dirname, "../public");
 
 //UserSchema
 const User = require("./models/userSchema");
-const Admin = require("./models/adminSchema");
 const Contact = require("./models/contactSchema");
 const Authenticate = require("./middleware/authenticate");
-const adminAuthenticate = require("./middleware/adminAuthenticate");
 const Blog = require("./models/blogSchema");
 
 app.use(express.json());
@@ -50,6 +48,7 @@ app.set("view engine", "hbs");
 app.set("views", template_path);
 require("./db/conn");
 app.use(require("./routers/user2"));
+app.use(require("./routers/admin"));
 //Home Route
 //---------------------------
 app.get("/", async (req, res) => {
@@ -128,40 +127,7 @@ app.get("/Contactus", Authenticate, (req, res) => {
 app.get("/aboutus", (req, res) => {
   res.render("aboutus");
 });
-app.get("/adminLogin", (req, res) => {
-  res.render("adminLogin");
-});
 
-app.get("/adminLogin", (req, res) => {
-  res.render("adminLogin");
-});
-app.get("/adminpage", adminAuthenticate, (req, res) => {
-  res.render("adminpage");
-});
-
-app.post("/adminlogin", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: "Fill both the fields" });
-    }
-    const adminLogin = await Admin.findOne({ email: email, password: password });
-    if (adminLogin) {
-      const token = await adminLogin.generateAuthToken();
-      console.log("token:", token);
-      res.cookie("jwtoken", token, {
-        expires: new Date(Date.now + 25892000000),
-        httpOnly: true,
-      });
-      return res.redirect("/adminpage");
-
-    } else {
-      return res.status(400).json({ error: "Invalid Credentials!" });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 //Blogger Profile Route
 //---------------------------
