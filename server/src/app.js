@@ -128,7 +128,6 @@ app.get("/aboutus", (req, res) => {
   res.render("aboutus");
 });
 
-
 //Blogger Profile Route
 //---------------------------
 app.get("/blogger", Authenticate, async (req, res) => {
@@ -191,13 +190,12 @@ app.post("/contactus", async (req, res) => {
     const contact = new Contact({ name, email, subject, message });
     await contact.save();
     res.redirect("/contactus");
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
   }
 });
 //Comment route
-app.post("/comment/:blogID", async (req, res) => {
+app.post("/comment/:blogID", Authenticate, async (req, res) => {
   try {
     let blogID = req.params.blogID;
     // const commentedBy = req.rootUser.email;
@@ -284,7 +282,7 @@ app.get("/myblog/:blogID", Authenticate, async (req, res) => {
   res.status(201).render("edit", { fullBlog: fullBlog });
 });
 
-app.get("/blog/:blogID", async (req, res) => {
+app.get("/blog/:blogID", Authenticate, async (req, res) => {
   let blogID = req.params.blogID;
   const fullBlog = await Blog.findOne({ _id: blogID });
   console.log(fullBlog);

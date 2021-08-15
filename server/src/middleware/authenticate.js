@@ -27,7 +27,7 @@ const Authenticate = async (req, res, next) => {
     }
   } catch (err) {
     // res.status(401).send("Unauthorized:No token provided");
-    res.redirect("/signInUp");
+    res.redirect("/signInUpUser");
     console.log(err);
   }
 };
