@@ -34,7 +34,10 @@ const static_path = path.join(__dirname, "../public");
 
 //UserSchema
 const User = require("./models/userSchema");
+const Admin = require("./models/adminSchema");
+const Contact = require("./models/contactSchema");
 const Authenticate = require("./middleware/authenticate");
+const adminAuthenticate = require("./middleware/adminAuthenticate");
 const Blog = require("./models/blogSchema");
 
 app.use(express.json());
@@ -45,7 +48,8 @@ app.use(express.urlencoded({ extend: false }));
 app.use(express.static(static_path));
 app.set("view engine", "hbs");
 app.set("views", template_path);
-
+require("./db/conn");
+app.use(require("./routers/user2"));
 //Home Route
 //---------------------------
 app.get("/", async (req, res) => {
@@ -106,18 +110,57 @@ app.post("/blogs", async (req, res) => {
 app.get("/signInUp", (req, res) => {
   res.render("signInUp");
 });
+//SignInUp Route
+//---------------------------
+app.get("/signInUpUser", (req, res) => {
+  res.render("signInUpUser");
+});
 //Blog Route
 //---------------------------
 app.get("/blog", Authenticate, (req, res) => {
   console.log(req.rootUser);
   res.render("Createblog", { profile: req.rootUser });
 });
-app.get("/Contactus", (req, res) => {
-  res.render("contactus");
+app.get("/Contactus", Authenticate, (req, res) => {
+  res.render("contactus", { profile: req.rootUser });
 });
 
 app.get("/aboutus", (req, res) => {
   res.render("aboutus");
+});
+app.get("/adminLogin", (req, res) => {
+  res.render("adminLogin");
+});
+
+app.get("/adminLogin", (req, res) => {
+  res.render("adminLogin");
+});
+app.get("/adminpage", adminAuthenticate, (req, res) => {
+  res.render("adminpage");
+});
+
+app.post("/adminlogin", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ error: "Fill both the fields" });
+    }
+    const adminLogin = await Admin.findOne({ email: email, password: password });
+    if (adminLogin) {
+      const token = await adminLogin.generateAuthToken();
+      console.log("token:", token);
+      res.cookie("jwtoken", token, {
+        expires: new Date(Date.now + 25892000000),
+        httpOnly: true,
+      });
+      return res.redirect("/adminpage");
+
+    } else {
+      return res.status(400).json({ error: "Invalid Credentials!" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //Blogger Profile Route
@@ -172,6 +215,18 @@ app.post("/signup", async (req, res) => {
       res.redirect("/signInUp");
     }
   } catch (err) {
+    console.log(err);
+  }
+});
+//contactus Route
+app.post("/contactus", async (req, res) => {
+  const { name, email, subject, message } = req.body;
+  try {
+    const contact = new Contact({ name, email, subject, message });
+    await contact.save();
+    res.redirect("/contactus");
+  }
+  catch (err) {
     console.log(err);
   }
 });
