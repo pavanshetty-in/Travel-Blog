@@ -19,15 +19,15 @@ const Authenticate = async (req, res, next) => {
       req.rootUser = rootUser2;
       req.userID = rootUser2._id;
       next();
-    }
-    else {
+    } else {
       req.token = token;
       req.rootUser = rootUser;
       req.userID = rootUser._id;
       next();
     }
   } catch (err) {
-    res.status(401).send("Unauthorized:No token provided");
+    // res.status(401).send("Unauthorized:No token provided");
+    res.redirect("/signInUp");
     console.log(err);
   }
 };

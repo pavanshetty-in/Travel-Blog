@@ -290,6 +290,11 @@
   width: 200%;
 }
 
+.overlay2 {
+  background: url("../assets/login122.jpg");
+  /* background-size: -200%; */
+}
+
 .container.active-panel .overlay {
   -webkit-transform: translateX(50%);
   transform: translateX(50%);
