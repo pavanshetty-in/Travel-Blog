@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="css/contactus.css" />
     <script src="https://kit.fontawesome.com/154fa5a621.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="brand">
@@ -31,7 +33,7 @@
             <div class="nav-item">
                 <p>Contact Us</p>
             </div>
-            
+
         </div>
     </nav>
 </body>
@@ -39,14 +41,16 @@
     <h1>Contact Us</h1>
     <span class="underline"></span>
     <h5>Have any Questions or Commants?</h5>
-    <form action="">
+    <form method="POST" action="/contactus">
+        {{#profile}}
         <div class="textbox">
             <span class="icon">
                 <i class="fas fa-user"></i>
             </span>
             <div>
                 <p>Name</p>
-                <input name="name" type="text" placeholder=" Your Full Name" pattern="[A-Za-z\s]+" required />
+                <input name="name" type="text" placeholder=" Your Full Name" pattern="[A-Za-z\s]+" required
+                    value={{name}} />
             </div>
         </div>
         <div class="textbox">
@@ -55,7 +59,7 @@
             </span>
             <div>
                 <p>Email</p>
-                <input name="email" type="email" placeholder="Your EmailID" required />
+                <input name="email" type="email" placeholder="Your EmailID" required value={{email}} />
             </div>
         </div>
         <div class="textbox">
@@ -69,8 +73,8 @@
         </div>
         <div class="textbox">
             <span class="icon">
-            
-            <i class="far fa-sticky-note"></i>
+
+                <i class="far fa-sticky-note"></i>
             </span>
             <div>
                 <p>Message</p>
@@ -78,7 +82,9 @@
             </div>
         </div>
         <button class="sendbtn" type="submit">Send</button>
+        {{/profile}}
     </form>
 
 </section>
+
 </html>
