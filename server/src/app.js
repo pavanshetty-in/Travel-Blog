@@ -107,13 +107,15 @@ app.post("/locblogs", async (req, res) => {
       } else {
         if (response.body.cod === 200) {
           weather = response.body;
+          weatherDetails = response.body.weather[0]
         } else {
           weather = [];
         }
         console.log(weather);
+        console.log(weatherDetails);
         req.rootBlog = rootBlog;
         console.log(req.rootBlog);
-        res.render("cityblogs", { blog: req.rootBlog, weather: weather });
+        res.render("cityblogs", { blog: req.rootBlog, weather: weather, weatherDetails: weatherDetails });
       }
     });
   } catch (err) {
