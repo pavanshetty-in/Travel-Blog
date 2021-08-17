@@ -15,28 +15,28 @@
         .nav-item {
             padding: 2vh;
         }
-    
+
         .nav-items {
             margin-right: 1vh;
         }
-        .search-loc
-        {
+
+        .search-loc {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 5vh;
         }
-        .search-inp
-        {
+
+        .search-inp {
             min-width: 30vw;
         }
-        .search-btn
-        {
+
+        .search-btn {
             min-width: 6vw;
             margin-right: 2vw;
         }
-        .section-weather
-        {
+
+        .section-weather {
             margin: 10vh 9vw;
         }
     </style>
@@ -70,7 +70,7 @@
                     <p> Logout</p>
                 </div>
             </a>
-           
+
 
 
         </div>
@@ -78,17 +78,20 @@
     <section class="search-loc">
         <div class="nav-item nav-item2">
             <form class="form1" id="form1" method="POST" action="/locblogs">
-        
+
                 <input class="search-inp" name="location" type="text" placeholder="location as Nearest City" required />
                 <button class="search-btn" type="submit">Find</button>
             </form>
         </div>
-    </section >
+    </section>
     <section class="section-weather">
-        {{#if (isdefined weather.cod)}}
-        <p>yes</p>
+        {{#if weather}}
+        <h1>data</h1>
+        {{#weather}}
+        <h1>{{main.temp}}</h1>
+        {{/weather}}
         {{else}}
-        <p>false</p>
+        <h1>no data</h1>
         {{/if}}
     </section>
     <section class="section-body">
@@ -121,8 +124,8 @@
 </body>
 <script>
     Handlebars.registerHelper('isdefined', function (value) {
-            return value == 200;
-        });
+        return value == 200;
+    });
 
 </script>
 

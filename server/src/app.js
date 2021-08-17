@@ -105,13 +105,17 @@ app.post("/locblogs", async (req, res) => {
       if (error) {
         console.log("Unable to connect to Forecast API");
       } else {
-        weather = response.body;
+        if (response.body.cod === 200) {
+          weather = response.body;
+        } else {
+          weather = [];
+        }
         console.log(weather);
+        req.rootBlog = rootBlog;
+        console.log(req.rootBlog);
+        res.render("cityblogs", { blog: req.rootBlog, weather: weather });
       }
     });
-    req.rootBlog = rootBlog;
-    console.log(req.rootBlog);
-    res.render("cityblogs", { blog: req.rootBlog, weather: weather });
   } catch (err) {
     res.status(401).send("Unauthorized:No token provided");
     console.log(err);
