@@ -106,8 +106,8 @@ adminRouter.get("/admin/blogs", adminAuthenticate, async (req, res) => {
     console.log(err);
   }
 });
-adminRouter.get("/admin",(req,res)=>{
-return res.redirect("/adminpage");
+adminRouter.get("/admin", (req, res) => {
+  return res.redirect("/adminpage");
 });
 
 adminRouter.post("/adminlogin", async (req, res) => {
@@ -134,6 +134,31 @@ adminRouter.post("/adminlogin", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+adminRouter.delete(
+  "/admindeleteBlog/:id",
+  adminAuthenticate,
+  async (req, res) => {
+    try {
+      const _id = req.params.id;
+      const blog = await Blog.findByIdAndDelete(_id);
+      res.redirect("/admin/blogs");
+      console.log(blog);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  }
+);
+
+adminRouter.get("/adminblog/:blogID", adminAuthenticate, async (req, res) => {
+  let blogID = req.params.blogID;
+  const fullBlog = await Blog.findOne({ _id: blogID });
+  console.log(fullBlog);
+  console.log(fullBlog.comments);
+  res
+    .status(201)
+    .render("blog", { fullBlog: fullBlog, comm: fullBlog.comments });
 });
 
 module.exports = adminRouter;

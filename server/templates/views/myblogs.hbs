@@ -9,6 +9,20 @@
 
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/viewblog.css">
+    <style>
+        .btn{
+            padding:1vh 1vw;
+            border: none;
+        }
+        .edit-btn{
+            color: #fff;
+            background-color: #ce3434;
+        }
+        .delete-blog{
+            border:1px solid #ce3434;
+            color:#ce3434;
+        }
+    </style>
 </head>
 
 <body>
@@ -59,9 +73,9 @@
             <img src={{blogimage}} alt="blog" height="400">
             <p>{{blogcontent}}</p>
             <a href="/myblog/{{_id}}">
-                <button>edit</button> </a>
+                <button  class="btn edit-btn">edit</button> </a>
             <form action="/deleteBlog/{{_id}}?_method=DELETE" method="POST">
-                <button type="submit">
+                <button class="btn delete-btn" type="submit">
                     delete
                 </button>
             </form>

@@ -70,6 +70,18 @@ app.get("/", async (req, res) => {
 app.get("/locationblogs", Authenticate, async (req, res) => {
   res.render("cityblogs");
 });
+app.get("/blogshome", async (req, res) => {
+  try {
+    const userBlog = await Blog.find();
+    if (!userBlog) {
+      throw new Error("User not found");
+    }
+    res.render("blogshome", { blog: userBlog });
+  } catch (err) {
+    res.status(401).send("Unauthorized:No token provided");
+    console.log(err);
+  }
+});
 
 //Blogs Route
 //----------------
