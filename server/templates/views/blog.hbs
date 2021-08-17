@@ -11,6 +11,24 @@
   <link rel="stylesheet" href="/css/viewblog.css">
   <link rel="stylesheet" href="/css/viewallblog.css">
   <script src="https://kit.fontawesome.com/154fa5a621.js" crossorigin="anonymous"></script>
+  <style>
+    h4{
+      margin-top:1vh;
+      
+
+    }
+    .btn-s{
+      padding: 1vh 3vw;
+      color: #fff;
+      background-color: #ce3434;
+      border: none;
+
+    }
+    .c-box
+    {
+      padding: 1vh;
+    }
+  </style>
 </head>
 
 <body>
@@ -20,7 +38,7 @@
     </div>
     <div class="nav-items nav-item2">
       <div class="nav-item">
-        <a href="/" style="color:black"> Home</a>
+        <a href="/blogs" style="color:black"> Home</a>
       </div>
       <a href="/aboutus">
       <div class="nav-item nav-item2">
@@ -67,15 +85,16 @@
     <div class="author-part">
       <h4><i class="fas fa-user-alt me-1"></i> Author: {{name}} </h4>
       <p> <i class="fas fa-envelope me-1 "></i> Email: {{email}}</p>
-      <p>auth desc</p>
+      {{!-- <p>auth desc</p> --}}
     </div>
     <form action="/comment/{{_id}}" method="POST">
-      <textarea name="comment" id="" cols="150" rows="5"></textarea>
-      <button type="submit">Comment</button>
+      <textarea class="c-box" name="comment" id="" cols="120" rows="2" placeholder="Add yor commant here"></textarea><br>
+      <button class="btn-s"type="submit">Add Comment</button>
     </form>
     {{/fullBlog}}
+    <p style="margin-top:4vh">Comments</p>
     {{#comm}}
-    <h2>{{comment}}</h2>
+    <h4>{{comment}}</h4>
     {{/comm}}
   </div>
 </body>
