@@ -6,7 +6,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const methodOverride = require("method-override");
-const request = require('request');
+const request = require("request");
 //Port
 const PORT = process.env.PORT;
 //Bcrypt password
@@ -66,6 +66,11 @@ app.get("/", async (req, res) => {
     console.log(err);
   }
 });
+
+app.get("/locationblogs", Authenticate, async (req, res) => {
+  res.render("cityblogs");
+});
+
 //Blogs Route
 //----------------
 app.get("/blogs", async (req, res) => {
@@ -80,15 +85,16 @@ app.get("/blogs", async (req, res) => {
     console.log(err);
   }
 });
-//FindBlogs Route
+
+//FindBlogs by location Route
 //----------------
-app.post("/blogs", async (req, res) => {
+app.post("/locblogs", async (req, res) => {
   const location = req.body.location;
   console.log(location);
   try {
     let rootBlog = null;
     let weather = null;
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=6dfb5a7766686fa2d25378fc54e7044c`
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=6dfb5a7766686fa2d25378fc54e7044c`;
     if (location == "") {
       rootBlog = await Blog.find();
     } else {
@@ -100,13 +106,46 @@ app.post("/blogs", async (req, res) => {
     }
     request({ url: url, json: true }, function (error, response) {
       if (error) {
-        console.log('Unable to connect to Forecast API');
-      }
-      else {
-        weather = response.body
+        console.log("Unable to connect to Forecast API");
+      } else {
+        weather = response.body;
         console.log(weather);
       }
-    })
+    });
+    req.rootBlog = rootBlog;
+    res.render("blogs", { blog: req.rootBlog });
+  } catch (err) {
+    res.status(401).send("Unauthorized:No token provided");
+    console.log(err);
+  }
+});
+
+//FindBlogs Route
+//----------------
+app.post("/blogs", async (req, res) => {
+  const location = req.body.location;
+  console.log(location);
+  try {
+    let rootBlog = null;
+    let weather = null;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=6dfb5a7766686fa2d25378fc54e7044c`;
+    if (location == "") {
+      rootBlog = await Blog.find();
+    } else {
+      rootBlog = await Blog.find({ location: location });
+    }
+
+    if (!rootBlog) {
+      throw new Error("Blog not found");
+    }
+    request({ url: url, json: true }, function (error, response) {
+      if (error) {
+        console.log("Unable to connect to Forecast API");
+      } else {
+        weather = response.body;
+        console.log(weather);
+      }
+    });
     req.rootBlog = rootBlog;
     res.render("blogs", { blog: req.rootBlog });
   } catch (err) {
@@ -329,18 +368,16 @@ app.delete("/deleteBlog/:id", Authenticate, async (req, res) => {
   }
 });
 app.get("/weather", Authenticate, async (req, res) => {
-  var url = "https://api.openweathermap.org/data/2.5/weather?q=bangalore&units=metric&appid=6dfb5a7766686fa2d25378fc54e7044c"
+  var url =
+    "https://api.openweathermap.org/data/2.5/weather?q=bangalore&units=metric&appid=6dfb5a7766686fa2d25378fc54e7044c";
   request({ url: url, json: true }, function (error, response) {
     if (error) {
-      console.log('Unable to connect to Forecast API');
-    }
-    else {
+      console.log("Unable to connect to Forecast API");
+    } else {
       console.log(response.body.main.temp);
     }
-  })
+  });
 });
-
-
 
 //Logout User
 //----------------

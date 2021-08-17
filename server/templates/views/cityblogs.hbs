@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TraveloCity</title>
+
+    <script src="https://kit.fontawesome.com/154fa5a621.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/viewallblog.css">
+
+    <style>
+        .nav-item {
+            padding: 2vh;
+        }
+    
+        .nav-items {
+            margin-right: 1vh;
+        }
+        .search-loc
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5vh;
+        }
+        .search-inp
+        {
+            min-width: 30vw;
+        }
+        .search-btn
+        {
+            min-width: 6vw;
+            margin-right: 2vw;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar nav-dark">
+        <div class="brand">
+            <h1>TraveloCity</h1>
+        </div>
+        <div class="nav-items nav-item2">
+
+            <a href="/aboutus">
+                <div class="nav-item nav-item2">
+                    <p>About Us</p>
+                </div>
+            </a>
+            <a href="/contactus">
+                <div class="nav-item nav-item2">
+                    <p>Contact Us</p>
+                </div>
+            </a>
+            <a href="/locationblogs">
+                <div class="nav-item nav-item2">
+                    <p>Search By Location</p>
+                </div>
+            </a>
+
+            <a href="/logout">
+                <div class="nav-item nav-item2">
+                    <p> Logout</p>
+                </div>
+            </a>
+           
+
+
+        </div>
+    </nav>
+    <section class="search-loc">
+        <div class="nav-item nav-item2">
+            <form class="form1" id="form1" method="POST" action="/locblogs">
+        
+                <input class="search-inp" name="location" type="text" placeholder="location as Nearest City" required />
+                <button class="search-btn" type="submit">Find</button>
+            </form>
+        </div>
+    </section >
+    <section class="section-body">
+        <div class="blogs-container">
+
+            {{!-- {{#blog}}
+            <div class="blog-div">
+                <div class="blog-imgs">
+                    <img src="{{ blogimage}}" alt="Blogimmage" width="200" high="150">
+                </div>
+                <div class="blog-content">
+                    <h2>{{blogname}}</h2>
+                    <p>{{blogdesc}}</p>
+                    <p class="auth-name"><i class="fas fa-user-alt me-1"></i>{{name}} <i
+                            class="fas fa-envelope me-1 ms-2"></i>{{email}} <i class="fas fa-clock me-1 ms-2"></i>{{
+                        dateFormat createdAt "dd, MM Do YY, h:mm:ss a" }}</p>
+                    <a href="/blog/{{_id}}"><button style="float:right">Read More</button></a>
+                </div>
+            </div>
+            {{/blog}} --}}
+
+        </div>
+    </section>
+
+
+</body>
+
+</html>
