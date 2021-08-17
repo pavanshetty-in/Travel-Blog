@@ -90,6 +90,9 @@
         {{#weather}}
         <h1>{{main.temp}}</h1>
         {{/weather}}
+        {{#weatherDetails}}
+        <h1>{{description}}</h1>
+        {{/weatherDetails}}
         {{else}}
         <h1>no data</h1>
         {{/if}}
