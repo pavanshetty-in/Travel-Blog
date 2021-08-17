@@ -1,0 +1,40 @@
+.section-weather {
+  margin: 10vh 19vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-weather21 {
+  margin-bottom: 5vh;
+}
+.section-weather2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 3vh;
+  padding-bottom: 1vh;
+  border-bottom: 1px solid black;
+}
+.section-weather2-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-weather2-left p {
+  font-weight: 600;
+  font-size: 48px;
+}
+.weather-logo-c {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+h2 {
+  font-weight: 400;
+}
+.weather-bottem h5 {
+  margin-bottom: 0.5vh;
+  font-weight: 500;
+  font-size: 18px;
+}

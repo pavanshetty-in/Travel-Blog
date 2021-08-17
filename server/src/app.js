@@ -94,6 +94,20 @@ app.post("/locblogs", async (req, res) => {
   try {
     let rootBlog = null;
     let weather = null;
+    let today = new Date();
+
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    let dateTime = date + " " + time;
+
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=6dfb5a7766686fa2d25378fc54e7044c`;
 
     rootBlog = await Blog.find({ location: location });
@@ -107,7 +121,7 @@ app.post("/locblogs", async (req, res) => {
       } else {
         if (response.body.cod === 200) {
           weather = response.body;
-          weatherDetails = response.body.weather[0]
+          weatherDetails = response.body.weather[0];
         } else {
           weather = [];
         }
@@ -115,7 +129,12 @@ app.post("/locblogs", async (req, res) => {
         console.log(weatherDetails);
         req.rootBlog = rootBlog;
         console.log(req.rootBlog);
-        res.render("cityblogs", { blog: req.rootBlog, weather: weather, weatherDetails: weatherDetails });
+        res.render("cityblogs", {
+          blog: req.rootBlog,
+          weather: weather,
+          weatherDetails: weatherDetails,
+          dateTime: dateTime,
+        });
       }
     });
   } catch (err) {
