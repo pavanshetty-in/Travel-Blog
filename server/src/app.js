@@ -95,11 +95,8 @@ app.post("/locblogs", async (req, res) => {
     let rootBlog = null;
     let weather = null;
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=6dfb5a7766686fa2d25378fc54e7044c`;
-    if (location == "") {
-      rootBlog = await Blog.find();
-    } else {
-      rootBlog = await Blog.find({ location: location });
-    }
+
+    rootBlog = await Blog.find({ location: location });
 
     if (!rootBlog) {
       throw new Error("Blog not found");
@@ -113,7 +110,8 @@ app.post("/locblogs", async (req, res) => {
       }
     });
     req.rootBlog = rootBlog;
-    res.render("blogs", { blog: req.rootBlog });
+    console.log(req.rootBlog);
+    res.render("cityblogs", { blog: req.rootBlog, weather: weather });
   } catch (err) {
     res.status(401).send("Unauthorized:No token provided");
     console.log(err);

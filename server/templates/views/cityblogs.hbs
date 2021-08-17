@@ -35,6 +35,10 @@
             min-width: 6vw;
             margin-right: 2vw;
         }
+        .section-weather
+        {
+            margin: 10vh 9vw;
+        }
     </style>
 </head>
 
@@ -80,10 +84,18 @@
             </form>
         </div>
     </section >
+    <section class="section-weather">
+        {{#if (isdefined weather.cod)}}
+        <p>yes</p>
+        {{else}}
+        <p>false</p>
+        {{/if}}
+    </section>
     <section class="section-body">
         <div class="blogs-container">
+            {{#if blog}}
 
-            {{!-- {{#blog}}
+            {{#blog}}
             <div class="blog-div">
                 <div class="blog-imgs">
                     <img src="{{ blogimage}}" alt="Blogimmage" width="200" high="150">
@@ -97,12 +109,21 @@
                     <a href="/blog/{{_id}}"><button style="float:right">Read More</button></a>
                 </div>
             </div>
-            {{/blog}} --}}
+            {{/blog}}
+            {{else}}
+            <h1>No Blogs found in this location</h1>
+            {{/if}}
 
         </div>
     </section>
 
 
 </body>
+<script>
+    Handlebars.registerHelper('isdefined', function (value) {
+            return value == 200;
+        });
+
+</script>
 
 </html>
