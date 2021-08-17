@@ -72,6 +72,9 @@
                     <th scope="col">Blogname</th>
                     <th scope="col">Created Date</th>
                     <th scope="col">View</th>
+                    
+                    
+                    <th scope="col">action</th>
                     <th scope="col">Delete</th>
 
                 </tr>
@@ -85,7 +88,17 @@
                     <td>{{blogname}}</td>
                     <td>{{createdAt}}</td>
                     <th> <a href="/blog/{{_id}}"> <button  class="btn btn-primary">View</button></a></th>
-                    <th> <a href="/deleteBlog/{{_id}}?_method=DELETE"> <button  class="btn btn-danger">Delete</button></a></th>
+                    <th><form action="">
+                        <select name="action" id="action">
+                            <option >Select</option>
+                            <option value="approve">Approve</option>
+                            <option value="reject">Reject</option>
+                           
+                        </select>
+                        <br><br>
+                        <input type="submit" value="Submit">
+                    </form></th>
+                    <th> <form action="/deleteBlog/{{_id}}?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Delete</button></form></th>
                     
                    
                 </tr>

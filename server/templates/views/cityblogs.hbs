@@ -117,12 +117,12 @@
         </div>
         <div class="weather-bottem">
             {{#weather}}
-            <h5>Humidity: {{main.humidity}}% </h5>
-            <h5>Presur: {{main.pressure}}hpa</h5>
-            <h5>Wind: {{wind.speed}} m/s</h5>
-            <h5>Wind Direction: {{wind.deg}}&degC</h5>
+            <h5>Humidity: <i class="fab fa-cloudscale"></i> {{main.humidity}} % </h5>
+            <h5>Presur: <i class="fas fa-arrows-alt-h"></i> {{main.pressure}} hpa</h5>
+            <h5>Wind: <i class="fas fa-wind"></i> {{wind.speed}} m/s</h5>
+            <h5>Wind Direction: <i class="fas fa-location-arrow"></i> {{wind.deg}} &degC</h5>
             {{#if rain}}
-            <h5>Rain: {{rain.1h}}</h5>
+            <h5>Rain: <i class="fas fa-cloud-showers-heavy"></i> {{rain.1h}} mm</h5>
             {{/if}}
             {{/weather}}
         </div>
