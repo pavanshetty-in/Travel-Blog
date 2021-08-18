@@ -194,6 +194,11 @@ app.post("/blogs", async (req, res) => {
 app.get("/signInUp", (req, res) => {
   res.render("signInUp");
 });
+
+
+app.get("/whatisblog", (req, res) => {
+  res.render("whatisblog");
+});
 //SignInUp Route
 //---------------------------
 app.get("/signInUpUser", (req, res) => {
