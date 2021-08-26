@@ -95,12 +95,17 @@ adminRouter.get("/admin/users", adminAuthenticate, async (req, res) => {
 
 adminRouter.get("/admin/blogs", adminAuthenticate, async (req, res) => {
   try {
-    const blogs = await Blog.find();
+    const blogs = await Blog.find({ status: 'pending' });
     if (!blogs) {
-      throw new Error("User not found");
+      throw new Error("Blogs not found");
+    }
+    const blogsApproved = await Blog.find({ status: 'approve' });
+    if (!blogsApproved) {
+      throw new Error("Blogs not found");
     }
     console.log(blogs);
-    res.render("admin-blogs", { blogs: blogs });
+    console.log(blogsApproved);
+    res.render("admin-blogs", { blogs: blogs, blogsApproved: blogsApproved });
   } catch (err) {
     res.status(401).send("Unauthorized:No token provided");
     console.log(err);
@@ -163,13 +168,14 @@ adminRouter.get("/adminblog/:blogID", adminAuthenticate, async (req, res) => {
 
 adminRouter.put("/editStatus/:id", adminAuthenticate, async (req, res) => {
   try {
-      const _id = req.params.id;
-      const status = await Blog.findByIdAndUpdate(_id, req.body, {
-          new: true,
-      });
-      console.log(status);
+    const _id = req.params.id;
+    const status = await Blog.findByIdAndUpdate(_id, req.body, {
+      new: true,
+    });
+    console.log(status);
+    res.render("admin-blogs");
   } catch (err) {
-      res.status(500).send(err);
+    res.status(500).send(err);
   }
 });
 
