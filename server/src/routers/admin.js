@@ -161,4 +161,16 @@ adminRouter.get("/adminblog/:blogID", adminAuthenticate, async (req, res) => {
     .render("blog", { fullBlog: fullBlog, comm: fullBlog.comments });
 });
 
+adminRouter.put("/editStatus/:id", adminAuthenticate, async (req, res) => {
+  try {
+      const _id = req.params.id;
+      const status = await Blog.findByIdAndUpdate(_id, req.body, {
+          new: true,
+      });
+      console.log(status);
+  } catch (err) {
+      res.status(500).send(err);
+  }
+});
+
 module.exports = adminRouter;
