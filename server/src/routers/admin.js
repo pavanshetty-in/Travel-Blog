@@ -40,9 +40,9 @@ adminRouter.get("/adminpage", adminAuthenticate, async (req, res) => {
     console.log(usersCount);
     console.log(blogsCount);
     res.render("adminpage", {
-      messages: messages,
-      bloggers: bloggers,
-      users: users,
+      messagesCount: messagesCount,
+      bloggersCount: bloggersCount,
+      usersCount: usersCount,
       blogsCount: blogsCount,
     });
   } catch (err) {

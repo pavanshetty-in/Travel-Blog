@@ -20,7 +20,8 @@ const adminAuthenticate = async (req, res, next) => {
         req.adminID = rootAdmin._id;
         next();
     } catch (err) {
-        res.status(401).send("Unauthorized:No token provided");
+        // res.status(401).send("Unauthorized:No token provided");
+        res.redirect("/adminLogin");
         console.log(err);
     }
 };

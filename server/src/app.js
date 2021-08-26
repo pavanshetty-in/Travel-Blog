@@ -1,6 +1,6 @@
 //ENV environment constiable file
 require("dotenv").config();
-let message =" ";
+var message ="";
 
 const hbs = require("hbs");
 const express = require("express");
@@ -193,7 +193,8 @@ app.post("/blogs", async (req, res) => {
 //SignInUp Route
 //---------------------------
 app.get("/signInUp", (req, res) => {
-  res.render("signInUp");
+  
+  res.render("signInUp", { message: message });
 });
 
 
@@ -203,7 +204,7 @@ app.get("/whatisblog", (req, res) => {
 //SignInUp Route
 //---------------------------
 app.get("/signInUpUser", (req, res) => {
-  res.render("signInUpUser");
+  res.render("signInUpUser", { message: message });
 });
 //Blog Route
 //---------------------------
@@ -312,6 +313,8 @@ app.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
+      //  message="Fill both the fields";
+      //   res.status(400).render("signInUp", { message: message });
       return res.status(400).json({ error: "Fill both the fields" });
     }
     const userLogin = await User.findOne({ email: email });
@@ -319,6 +322,8 @@ app.post("/signin", async (req, res) => {
       const isMatch = await bcrypt.compare(password, userLogin.password);
 
       if (!isMatch) {
+        // message="Invalid Credentials!";
+        // return res.status(400).render("signInUp", { message: message });
         return res.status(400).json({ error: "Invalid Credentials!" });
       } else {
         const token = await userLogin.generateAuthToken();
@@ -332,6 +337,9 @@ app.post("/signin", async (req, res) => {
         return res.redirect("/blogger");
       }
     } else {
+      // message="Invalid Credentials!";
+       
+      //  return res.status(400).render("signInUp", { message: message });
       return res.status(400).json({ error: "Invalid Credentials!" });
     }
   } catch (err) {
@@ -370,7 +378,7 @@ app.get("/myblog/:blogID", Authenticate, async (req, res) => {
   let blogID = req.params.blogID;
   const fullBlog = await Blog.find({ _id: blogID });
   console.log(fullBlog);
-  res.status(201).render("edit", { fullBlog: fullBlog });
+  res.status(201).render("edit", { fullBlog: fullBlog ,profile: req.rootUser});
 });
 
 app.get("/blog/:blogID", Authenticate, async (req, res) => {
