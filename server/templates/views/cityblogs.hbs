@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/viewallblog.css">
     <link rel="stylesheet" href="css/weather.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <style>
         .nav-item {
@@ -124,6 +127,7 @@
             {{#if rain}}
             <h5>Rain: <i class="fas fa-cloud-showers-heavy"></i> {{rain.1h}} mm</h5>
             {{/if}}
+            <a href="https://www.google.com/maps/@{{coord.lat}},{{coord.lon}},13z" target="blank"><bUtton CLASS="btn btn-primary mt-5 px-5">Navigate <i class="fas fa-location-arrow"></i></bUtton></a>
             {{/weather}}
         </div>
         {{!-- {{#if weather}}
