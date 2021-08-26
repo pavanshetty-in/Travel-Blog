@@ -72,7 +72,7 @@ app.get("/locationblogs", Authenticate, async (req, res) => {
 });
 app.get("/blogshome", async (req, res) => {
   try {
-    const userBlog = await Blog.find();
+    const userBlog = await Blog.find({ status: "approve" });
     if (!userBlog) {
       throw new Error("User not found");
     }
@@ -87,7 +87,7 @@ app.get("/blogshome", async (req, res) => {
 //----------------
 app.get("/blogs", async (req, res) => {
   try {
-    const userBlog = await Blog.find();
+    const userBlog = await Blog.find({ status: "approve" });
     if (!userBlog) {
       throw new Error("User not found");
     }
@@ -122,7 +122,7 @@ app.post("/locblogs", async (req, res) => {
 
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=6dfb5a7766686fa2d25378fc54e7044c`;
 
-    rootBlog = await Blog.find({ location: location });
+    rootBlog = await Blog.find({ location: location, status: "approve" });
 
     if (!rootBlog) {
       throw new Error("Blog not found");
@@ -167,7 +167,7 @@ app.post("/blogs", async (req, res) => {
     if (location == "") {
       rootBlog = await Blog.find();
     } else {
-      rootBlog = await Blog.find({ location: location });
+      rootBlog = await Blog.find({ location: location, status: "approve" });
     }
 
     if (!rootBlog) {
