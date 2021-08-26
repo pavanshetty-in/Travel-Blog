@@ -1,5 +1,6 @@
 //ENV environment constiable file
 require("dotenv").config();
+let message =" ";
 
 const hbs = require("hbs");
 const express = require("express");

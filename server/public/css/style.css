@@ -438,4 +438,20 @@
     z-index: 5;
   }
 }
+
+.closebtn
+{
+  color: #fff;
+  
+  font-weight: 400;
+  position: absolute;
+  z-index: 9999;
+  float: left;
+  margin: 2vh 2vw;
+  padding: 0.5vw 2vw;
+  border: none;
+  background-color: #a3b6e4;
+  cursor: pointer;
+  border-radius: 2px;
+}
 /*# sourceMappingURL=loginpage1.2.css.map */
