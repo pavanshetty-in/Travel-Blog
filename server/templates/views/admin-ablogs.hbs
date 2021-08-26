@@ -81,13 +81,13 @@
                     <th scope="col">View</th>
 
 
-                    
+                    <th scope="col">action</th>
                     <th scope="col">Delete</th>
 
                 </tr>
             </thead>
             <tbody>
-                {{#blogsApproved}}
+                {{#blogs}}
                 <tr>
                     <th>{{name}}</th>
                     <td>{{email}}</td>
@@ -95,7 +95,17 @@
                     <td>{{blogname}}</td>
                     <td>{{createdAt}}</td>
                     <th> <a href="/adminblog/{{_id}}"> <button class="btn btn-primary">View</button></a></th>
-                    
+                    <th>
+                        <form action="/editStatus/{{_id}}?_method=PUT" method="POST">
+                            <select name="status" id="status">
+                                <option>Select</option>
+                                <option value="approve">Approve</option>
+                                <option value="reject">Reject</option>
+                            </select>
+                            <br><br>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </th>
                     <th>
                         <form action="/admindeleteBlog/{{_id}}?_method=DELETE" method="POST"><button type="submit"
                                 class="btn btn-danger">Delete</button></form>
@@ -103,7 +113,7 @@
 
 
                 </tr>
-                {{/blogsApproved}}
+                {{/blogs}}
             </tbody>
         </table>
 
