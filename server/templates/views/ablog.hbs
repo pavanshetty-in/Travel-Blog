@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TraveloCity</title>
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/viewblog.css">
+  <link rel="stylesheet" href="/css/viewallblog.css">
+  <script src="https://kit.fontawesome.com/154fa5a621.js" crossorigin="anonymous"></script>
+  <style>
+    h4{
+      margin-top:1vh;
+      
+
+    }
+    .btn-s{
+      padding: 1vh 3vw;
+      color: #fff;
+      background-color: #ce3434;
+      border: none;
+
+    }
+    .c-box
+    {
+      padding: 1vh;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar nav-dark">
+        <div class="brand">
+            <img src="/assets/travelocitylogo2.svg" alt="logo" width="280">
+        </div>
+        <div class="nav-items nav-item2">
+            <a href="/admin">
+                <div class="nav-item nav-item2">
+                    <p>Home</p>
+                </div>
+            </a>
+            <a href="/admin/messages">
+                <div class="nav-item nav-item2">
+                    <p>Message</sp>
+                </div>
+            </a>
+            <a href="/admin/bloggers">
+                <div class="nav-item nav-item2">
+                    <p>Bloggers</p>
+                </div>
+            </a>
+            <a href="/admin/users">
+                <div class="nav-item nav-item2">
+
+                    <p>Users</p>
+
+                </div>
+            </a>
+            <a href="/admin/blogs">
+                <div class="nav-item nav-item2">
+
+                    <p>Blogs</p>
+
+                </div>
+            </a>
+            <a href="/admin/ablogs">
+                <div class="nav-item nav-item2">
+        
+                    <p>Approve Blog</p>
+        
+                </div>
+            </a>
+            <div class="dropdown">
+                <button class="nav-item signin-button nav-item2 ">
+
+                    <p>Admin</p>
+
+                </button>
+                <div class="dropdown-content">
+
+                    <a href="/logout">Logout</a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+  <div class="container-blogs">
+    {{#fullBlog}}
+    <div class="blog-part">
+      <h1>{{blogname}}</h1>
+      <p class="auth-name mb-1"><i class="fas fa-user-alt me-1"></i>{{name}} <i
+          class="fas fa-envelope me-1 ms-2"></i>{{email}} <i class="fas fa-clock me-1 ms-2"></i>{{ dateFormat createdAt
+        "dd, MM Do YY, h:mm:ss a" }}</p>
+      <p class="mb-1">{{blogdesc}}</p>
+      <img class="mb-1" src="{{blogimage}}" alt="Blog IMG" height="400" />
+      <p>{{blogcontent}}</p>
+    </div>
+    <div class="author-part">
+      <h4><i class="fas fa-user-alt me-1"></i> Author: {{name}} </h4>
+      <p> <i class="fas fa-envelope me-1 "></i> Email: {{email}}</p>
+      {{!-- <p>auth desc</p> --}}
+    </div>
+    <form action="/comment/{{_id}}" method="POST">
+      <textarea class="c-box" name="comment" id="" cols="120" rows="2" placeholder="Add your comment here"></textarea><br>
+      <button class="btn-s"type="submit">Add Comment</button>
+    </form>
+    {{/fullBlog}}
+    <p style="margin-top:4vh">Comments</p>
+    {{#comm}}
+    <h4>{{comment}}</h4>
+    {{/comm}}
+  </div>
+</body>
+
+</html>

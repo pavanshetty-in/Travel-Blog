@@ -184,7 +184,7 @@ adminRouter.get("/adminblog/:blogID", adminAuthenticate, async (req, res) => {
   console.log(fullBlog.comments);
   res
     .status(201)
-    .render("blog", { fullBlog: fullBlog, comm: fullBlog.comments });
+    .render("ablog", { fullBlog: fullBlog, comm: fullBlog.comments });
 });
 
 adminRouter.put("/editStatus/:id", adminAuthenticate, async (req, res) => {
