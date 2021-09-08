@@ -10,17 +10,19 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/viewblog.css">
     <style>
-        .btn{
-            padding:1vh 1vw;
+        .btn {
+            padding: 1vh 1vw;
             border: none;
         }
-        .edit-btn{
+
+        .edit-btn {
             color: #fff;
             background-color: #ce3434;
         }
-        .delete-blog{
-            border:1px solid #ce3434;
-            color:#ce3434;
+
+        .delete-blog {
+            border: 1px solid #ce3434;
+            color: #ce3434;
         }
     </style>
 </head>
@@ -28,30 +30,30 @@
 <body>
     <nav class="navbar nav-dark">
         <div class="brand ">
-           <img src="/assets/travelocitylogo2.svg" alt="logo" width="280">
+            <img src="/assets/travelocitylogo2.svg" alt="logo" width="280">
         </div>
         <div class="nav-items nav-item2">
-             <a href="/blogger" >
-            <div class="nav-item">
-               <p style="color:black"> Home</p>
-            </div>
+            <a href="/blogger">
+                <div class="nav-item">
+                    <p style="color:black"> Home</p>
+                </div>
             </a>
             <a href="/aboutus">
-            <div class="nav-item nav-item2">
-                <p>About </p>
-            </div>
+                <div class="nav-item nav-item2">
+                    <p>About </p>
+                </div>
             </a>
             <a href="/contactus">
-            <div class="nav-item nav-item2">
-                <p>Contact </p>
-            </div>
+                <div class="nav-item nav-item2">
+                    <p>Contact </p>
+                </div>
             </a>
-             <a href="/blog">
-            <div class="nav-item nav-item2">
-               
+            <a href="/blog">
+                <div class="nav-item nav-item2">
+
                     <p class="nav-item2">New Blog</p>
-                
-            </div>
+
+                </div>
             </a>
             <div class="dropdown">
                 <button class="nav-item signin-button nav-item2 b-2">
@@ -76,9 +78,9 @@
             <h3>{{ dateFormat createdAt "dd, MM Do YY, h:mm:ss a" }}</h3>
             <h2>Status: {{status}}</h2>
             <img src={{blogimage}} alt="blog" height="400">
-            <p>{{blogcontent}}</p>
+            <p id="pre">{{blogcontent}}</p>
             <a href="/myblog/{{_id}}">
-                <button  class="btn edit-btn">edit</button> </a>
+                <button class="btn edit-btn">edit</button> </a>
             <form action="/deleteBlog/{{_id}}?_method=DELETE" method="POST">
                 <button class="btn delete-btn" type="submit">
                     delete

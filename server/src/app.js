@@ -1,6 +1,6 @@
 //ENV environment constiable file
 require("dotenv").config();
-var message ="";
+var message = "";
 
 const hbs = require("hbs");
 const express = require("express");
@@ -193,7 +193,7 @@ app.post("/blogs", async (req, res) => {
 //SignInUp Route
 //---------------------------
 app.get("/signInUp", (req, res) => {
-  
+
   res.render("signInUp", { message: message });
 });
 
@@ -338,7 +338,7 @@ app.post("/signin", async (req, res) => {
       }
     } else {
       // message="Invalid Credentials!";
-       
+
       //  return res.status(400).render("signInUp", { message: message });
       return res.status(400).json({ error: "Invalid Credentials!" });
     }
@@ -378,7 +378,7 @@ app.get("/myblog/:blogID", Authenticate, async (req, res) => {
   let blogID = req.params.blogID;
   const fullBlog = await Blog.find({ _id: blogID });
   console.log(fullBlog);
-  res.status(201).render("edit", { fullBlog: fullBlog ,profile: req.rootUser});
+  res.status(201).render("edit", { fullBlog: fullBlog, profile: req.rootUser });
 });
 
 app.get("/blog/:blogID", Authenticate, async (req, res) => {
@@ -393,16 +393,37 @@ app.get("/blog/:blogID", Authenticate, async (req, res) => {
 
 app.get;
 //Edit Blog
-app.put("/editBlog/:id", Authenticate, async (req, res) => {
-  try {
-    const _id = req.params.id;
-    const blog = await Blog.findByIdAndUpdate(_id, req.body, {
-      new: true,
-    });
-    res.redirect("/myblogs");
-    console.log(blog);
-  } catch (err) {
-    res.status(500).send(err);
+app.put("/editBlog/:id", Authenticate, upload.single("photo"), async (req, res) => {
+  const pic = req.file;
+  console.log("file: ", req.file);
+  if (pic !== undefined) {
+    cloudinary.uploader.upload(pic.path, async (err, result) => {
+      const blogimage = result.secure_url;
+      let blogBody = { ...req.body, blogimage };
+      try {
+        const _id = req.params.id;
+        const blog = await Blog.findByIdAndUpdate(_id, blogBody, {
+          new: true,
+        });
+        res.redirect("/myblogs");
+        console.log(blog);
+      } catch (err) {
+        res.status(500).send(err);
+      }
+    })
+  }
+  else {
+    try {
+      const _id = req.params.id;
+      const blog = await Blog.findByIdAndUpdate(_id, req.body, {
+        new: true,
+      });
+      res.redirect("/myblogs");
+      console.log(blog);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+
   }
 });
 //Delete Blog
