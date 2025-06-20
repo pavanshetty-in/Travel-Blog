@@ -2,7 +2,7 @@
 
 **Travelholic** is a responsive travel blogging application built using the **MEHN** stack: **MongoDB**, **Express.js**, **Handlebars**, and **Node.js**. It is designed for users who want to explore travel blogs, search locations, and post their own experiences through a seamless and engaging web platform.
 
-![Travelholic Banner](./public/assets/banner.png)
+![Travelholic Banner](./server/public/assets/banner.png)
 
 ---
 
@@ -48,17 +48,17 @@
 
 ## 📸 Screenshots
 
-### 🏔️ Homepage
-![Homepage](./public/assets/screenshot1.png)
+### 🏔️ Search page
+![Homepage](./server/public/assets/screenshot1.png)
 
 ### 🔐 Sign In / Sign Up
-![Auth](./public/assets/screenshot2.png)
+![Auth](./server/public/assets/screenshot2.png)
 
 ### 🧭 Blog List
-![Blog List](./public/assets/screenshot3.png)
+![Blog List](./server/public/assets/screenshot3.png)
 
 ### 📝 Blog Detail Page
-![Blog Detail](./public/assets/screenshot4.png)
+![Blog Detail](./server/public/assets/screenshot4.png)
 
 ---
 
